@@ -249,8 +249,16 @@ struct EmitterSortParallel : ff_node {
 
     void* svc(void*) override {
         for (size_t i = 0; i < arr.size(); i += chunk_size) {
+            // Per gestire anche il caso in cui l'array non sia divisibile per chunk_size
+            // end ha dimensione il minimo tra la posizione nell'array + chunk_size e la dimensione massima rimasta nell'array nel caso non sia divisibile
             size_t end = std::min(i + chunk_size, arr.size());
+            // In questa riga creo il vettore di dimensione chunk_size
+            // Sommando i ottengo un iteratore all'elemento di indice i.
+            // arr.begin() restituisce un iteratore al primo elemento sommandoci i mi sposto tra tutti gli elementi fino a arr.size
+            // arr.begin() + end restituisce invece l'iteratore alla posizione successiva all'ultimo elemento del blocco
+            // In questo modo costruisco un nuovo vettore copiando gli elementi da indice i fino a end-1.
             auto* block = new std::vector<Record*>(arr.begin() + i, arr.begin() + end);
+            // Manda il blocco da ordinare ai worker
             ff_send_out(block);
         }
         return EOS;
@@ -272,30 +280,39 @@ struct WorkerSortParallel : ff_node {
 
 // --- Collector: merge incrementale due-a-due ---
 struct CollectorSortParallel : ff_node {
-    std::vector<Record*> result; // array ordinato accumulato
+    std::vector<Record*>& result; // array ordinato accumulato
+
+    CollectorSortParallel(std::vector<Record*>& result)
+        : result(result) {}
 
     void* svc(void* task) override {
         std::vector<Record*>* block = (std::vector<Record*>*) task;
 
         if (result.empty()) {
-            // primo blocco: copia diretta
+            // primo blocco che arriva -> copio direttamente
             result = *block;
         } else {
-            // merge con il risultato parziale
+            // Eseguo il merge mano a mano che arriano dati 
             std::vector<Record*> merged;
             merged.reserve(result.size() + block->size());
 
             size_t i = 0, j = 0;
+            // Finche uno dei due array è esaurito
             while (i < result.size() && j < block->size()) {
+                // Confronto le chiavi dei due array e inserisco l'elemento nel vettore del merge
                 if (result[i]->key <= (*block)[j]->key)
                     merged.push_back(result[i++]);
                 else
                     merged.push_back((*block)[j++]);
             }
             // copia rimanenti
-            while (i < result.size()) merged.push_back(result[i++]);
+            // Quando ho finito uno dei due array copio i rimanenti elementi dell'array non esaurito nel blocco finale
+            // Se esaurisco prima l'array block allora il primo while sposta tutti gli elementi nell'array merged
+            while (i < result.size()) merged.push_back(result[i++]); // Duplica il riferimento ai dati -> puntaotri
             while (j < block->size()) merged.push_back((*block)[j++]);
 
+            // SCambia il contenuto dei due buffer
+            // Result contiene merged e merged contiene result
             result.swap(merged);
         }
 
@@ -308,6 +325,67 @@ struct CollectorSortParallel : ff_node {
                   << result.size() << " record\n";
     }
 };
+
+struct CollectorMergeTree : ff_node {
+    std::vector<Record*>& finalResult;      // risultato finale
+    std::mutex mtx;
+    std::queue<std::vector<Record*>*> q;    // coda dei blocchi ordinati
+
+    CollectorMergeTree(std::vector<Record*>& result)
+        : finalResult(result) {}
+
+    // funzione di merge di due blocchi
+    static std::vector<Record*>* mergeBlocks(std::vector<Record*>* a, std::vector<Record*>* b) {
+        std::vector<Record*>* merged = new std::vector<Record*>();
+        merged->reserve(a->size() + b->size());
+
+        size_t i = 0, j = 0;
+        while (i < a->size() && j < b->size()) {
+            if ((*a)[i]->key <= (*b)[j]->key) merged->push_back((*a)[i++]);
+            else merged->push_back((*b)[j++]);
+        }
+        while (i < a->size()) merged->push_back((*a)[i++]);
+        while (j < b->size()) merged->push_back((*b)[j++]);
+
+        delete a;
+        delete b;
+        return merged;
+    }
+
+    void* svc(void* task) override {
+        auto* block = static_cast<std::vector<Record*>*>(task);
+
+        std::vector<Record*>* toMerge = nullptr;
+
+        {
+            std::lock_guard<std::mutex> lock(mtx);
+            q.push(block);
+
+            // se ci sono almeno due blocchi, li prendiamo e li fondiamo in parallelo
+            if (q.size() >= 2) {
+                auto* first = q.front(); q.pop();
+                auto* second = q.front(); q.pop();
+                toMerge = mergeBlocks(first, second);  // merge sequenziale qui, ma puoi anche lanciare thread separati
+                q.push(toMerge);
+            }
+        }
+
+        return GO_ON;
+    }
+
+    void svc_end() override {
+        // Alla fine ci dovrebbe rimanere un solo blocco nella coda: il risultato finale
+        if (!q.empty()) {
+            finalResult = *(q.front());
+            delete q.front();
+            q.pop();
+        }
+        std::cout << "Ordinamento completato, array finale ha "
+                << finalResult.size() << " record\n";
+        // niente return
+    }
+};
+
 
 int main(int argc, char *argv[]) {
     srand(time(NULL));
@@ -421,7 +499,9 @@ int main(int argc, char *argv[]) {
         workerSort.push_back(new WorkerSortParallel());
     }
 
-    CollectorSortParallel* CollectorSort = new CollectorSortParallel();
+    std::vector<Record*> result;
+    CollectorSortParallel* CollectorSort = new CollectorSortParallel(result);
+    // CollectorMergeTree* CollectorSort = new CollectorMergeTree(result);
     mergeSortParalleloFarm.add_emitter(EmitterSort);
     mergeSortParalleloFarm.add_workers(workerSort);
     mergeSortParalleloFarm.add_collector(CollectorSort);
@@ -433,6 +513,7 @@ int main(int argc, char *argv[]) {
     }
     TIMERSTOP(mergeParSort)
 
+    // printRecords(result);
     // Controllo ordinamento
     for (size_t i = 1; i < recordsCopySeqMerge.size(); ++i)
         if (recordsCopySeqMerge[i-1]->key > recordsCopySeqMerge[i]->key) {
