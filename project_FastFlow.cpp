@@ -452,7 +452,6 @@ int main(int argc, char *argv[]) {
     // cout << "========MergeSort completato correttamente su " << array_size << " record.==========" << endl;
     // //printRecords(records);
     
-
     // Pulizia memoria
     //for (Record* r : records) free(r);
 
