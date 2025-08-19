@@ -25,6 +25,12 @@ else
     CXXFLAGS += -fopenmp
 endif
 
+# Se il target contiene "MPI", usiamo mpic++
+ifeq ($(findstring MPI,$@),MPI)
+    CXX = mpic++
+    CXXFLAGS += -fopenmp
+endif
+
 SOURCES = $(wildcard *.cpp)
 TARGET  = $(SOURCES:.cpp=)
 
