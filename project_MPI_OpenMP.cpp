@@ -60,8 +60,8 @@ std::vector<char> saveRecordsToFile(int n, unsigned int payload_max) {
     #pragma omp parallel
     {
         
-        int tid = omp_get_thread_num();
-        auto& local_buffer = thread_buffers[tid];
+        int id = omp_get_thread_num();
+        auto& local_buffer = thread_buffers[id];
 
         #pragma omp for
         for (int i = 0; i < n; i++) {
@@ -265,6 +265,11 @@ void saveRecordsToFile2(const std::string& filename, int n, unsigned int payload
     std::cout << "File creato con " << n << " record.\n";
 }
 
+void mergeSortMPI_SubProcess(std::vector<Record*>& local_buffer) {
+    // Eseguo il merge sort sul buffer locale
+    std::vector<Record*> temp(local_buffer.size());
+    mergeSortPar(local_buffer, 0, local_buffer.size() - 1, temp);
+}
 
 int main(int argc, char *argv[]) {
     srand(time(NULL));
@@ -387,50 +392,93 @@ int main(int argc, char *argv[]) {
     // saveRecordsToFile("records.bin", array_size, PAYLOAD_MAX);
     // TIMERSTOP(saveRecordsToFile);
     if(rank == 0) {
-    // Caricamento dei record dal file
-    auto records = loadRecordsFromFile("records.bin");
-    //printRecords(records);
-    // Copia dei record per il confronto
-    std::vector<Record*> recordsCopySeq = records;
-    std::vector<Record*> recordsCopyPar = records;
-    std::vector<Record*> recordsMPI_OpenMP = records;
-    // Buffer temporaneo per il merge
-    vector<Record*> tempSeq(records.size());
-    vector<Record*> tempPar(records.size());
-    // MERGE SORT SEQUENZIALE
-    TIMERSTART(mergeSortSeq);
-    mergeSortSeq(recordsCopySeq, 0, recordsCopySeq.size() - 1, tempSeq);
-    TIMERSTOP(mergeSortSeq);
+        // Caricamento dei record dal file
+        auto records = loadRecordsFromFile("records.bin");
+        //printRecords(records);
+        // Copia dei record per il confronto
+        std::vector<Record*> recordsCopySeq = records;
+        std::vector<Record*> recordsCopyPar = records;
+        std::vector<Record*> recordsMPI_OpenMP = records;
+        // Buffer temporaneo per il merge
+        vector<Record*> tempSeq(records.size());
+        vector<Record*> tempPar(records.size());
+        // MERGE SORT SEQUENZIALE
+        TIMERSTART(mergeSortSeq);
+        mergeSortSeq(recordsCopySeq, 0, recordsCopySeq.size() - 1, tempSeq);
+        TIMERSTOP(mergeSortSeq);
 
-    TIMERSTART(mergeSortPar);
-    // Utilizzo questa direttiva per creare il pool di thread che verra utilizzato dal mergeSort
-    // Riutilizzo i thread così non ho overhead per crearli e distruggerli
-    #pragma omp parallel
-    {
-        // Questo è necessario per eseguire la funzione una sola volta
-        #pragma omp single
-        mergeSortPar(recordsCopyPar, 0, recordsCopyPar.size() - 1, tempPar);
-    }
-    TIMERSTOP(mergeSortPar);
+        TIMERSTART(mergeSortPar);
+        // Utilizzo questa direttiva per creare il pool di thread che verra utilizzato dal mergeSort
+        // Riutilizzo i thread così non ho overhead per crearli e distruggerli
+        #pragma omp parallel
+        {
+            // Questo è necessario per eseguire la funzione una sola volta
+            #pragma omp single
+            mergeSortPar(recordsCopyPar, 0, recordsCopyPar.size() - 1, tempPar);
+        }
+        TIMERSTOP(mergeSortPar);
 
-    // Controllo ordinamento
-    for (size_t i = 1; i < recordsCopySeq.size(); ++i)
-        if (recordsCopySeq[i-1]->key > recordsCopySeq[i]->key) {
-            cerr << "Errore ordinamento Sequenziale!" << endl;
+        // Controllo ordinamento
+        for (size_t i = 1; i < recordsCopySeq.size(); ++i)
+            if (recordsCopySeq[i-1]->key > recordsCopySeq[i]->key) {
+                cerr << "Errore ordinamento Sequenziale!" << endl;
+            }
+
+        for (size_t i = 1; i < recordsCopyPar.size(); ++i)
+            if (recordsCopyPar[i-1]->key > recordsCopyPar[i]->key) {
+                cerr << "Errore ordinamento Parallelo!" << endl;
         }
 
-    for (size_t i = 1; i < recordsCopyPar.size(); ++i)
-        if (recordsCopyPar[i-1]->key > recordsCopyPar[i]->key) {
-            cerr << "Errore ordinamento Parallelo!" << endl;
+        cout << "========MergeSort completato correttamente su " << array_size << " record.==========" << endl;
+        //printRecords(records);
+        
+        // =============================================
+        // ========= MERGE MPI INCREMENTALE ============
+        // =============================================
+    int mpi_records_dim = recordsMPI_OpenMP.size();
+    // Invio ai worker le parti da ordinare
+    int chunk_size = mpi_records_dim / (size - 1); // esempio per inviare a rank > 0
+    for(int i=1; i<size; i++) {
+        int start = (i-1)*chunk_size;
+        int end = (i == size-1) ? mpi_records_dim : start + chunk_size;
+        int current_chunk = end - start;
+
+        // invio la dimensione del chunk
+        MPI_Send(&current_chunk, 1, MPI_INT, i, 0, MPI_COMM_WORLD);
+
+        // invio i record veri (non puntatori!)
+        MPI_Send(&records[start], current_chunk * sizeof(Record), MPI_BYTE, i, 1, MPI_COMM_WORLD);
+
+    }
+    if (rank == 0) {
+        // Pulizia memoria
+        for (Record* r : records) free(r);
+    }
+}
+
+    if (rank != 0) {
+        TIMERSTART(mergeSortMPI_SubProcess);
+        // Altri processi non principale
+        // Devono ordinare i record dell'array di dimensione chunk_size
+        // rank ricevente
+        int recv_chunk;
+        MPI_Recv(&recv_chunk, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+
+        std::vector<Record> local_records(recv_chunk);
+        MPI_Recv(local_records.data(), recv_chunk * sizeof(Record), MPI_BYTE, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+
+        std::cout << "Rank " << rank << " ha ricevuto " << recv_chunk << " record.\n";
+        // for(auto &r : local_records)
+        //     std::cout << "key=" << r.key << "\n";
+        std::vector<Record*> local_ptrs(local_records.size());
+        for(size_t i = 0; i < local_records.size(); i++)
+            local_ptrs[i] = &local_records[i];
+
+        printRecords(local_ptrs);
+
+        TIMERSTOP(mergeSortMPI_SubProcess);
     }
 
-    cout << "========MergeSort completato correttamente su " << array_size << " record.==========" << endl;
-    //printRecords(records);
-    
-
-    // Pulizia memoria
-    for (Record* r : records) free(r);
-    }
     MPI_Finalize();
     return 0;
 }
