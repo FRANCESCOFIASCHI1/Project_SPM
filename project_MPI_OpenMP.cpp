@@ -494,9 +494,9 @@ int main(int argc, char *argv[]) {
         cout << "========MergeSort completato correttamente su " << array_size << " record.==========" << endl;
         //printRecords(records);
         
-        // =============================================
-        // ========= MERGE MPI INCREMENTALE ============
-        // =============================================
+        // ============================================
+        // =============== MERGE MPI ==================
+        // ============================================
     int mpi_records_dim = recordsMPI_OpenMP.size();
     //std::cout << "Dimensione totale dei record MPI: " << mpi_records_dim << std::endl;
     std::cout << "===============================" << std::endl;
@@ -545,7 +545,7 @@ int main(int argc, char *argv[]) {
 
     std::vector<RecordHeader*> tempMPIHead(local_size);
 
-    #pragma omp parallel
+    #pragma omp parallel num_threads(num_threads)
     {
         #pragma omp single
         mergeSortParMPI(header_ptrs0, 0, local_size-1, tempMPIHead);
@@ -621,10 +621,6 @@ int main(int argc, char *argv[]) {
         std::vector<RecordHeader> headers(recv_chunk);
         MPI_Recv(headers.data(), recv_chunk * sizeof(RecordHeader), MPI_BYTE, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
-        //std::cout << "Rank " << rank << " ha ricevuto " << recv_chunk << " record.\n";
-        // for(auto &r : local_records)
-        //     std::cout << "key=" << r.key << "\n";
-
         // Creiamo array di puntatori agli headers per mergeSortPar
         std::vector<RecordHeader*> header_ptrs(recv_chunk);
         for(int i=0; i<recv_chunk; i++)
@@ -638,15 +634,6 @@ int main(int argc, char *argv[]) {
             #pragma omp single
             mergeSortParMPI(header_ptrs, 0, header_ptrs.size() - 1, tempMPIHead);
         }
-        //printRecords(local_ptrs);
-        // for (size_t i = 0; i < header_ptrs.size(); i++) {
-        //     RecordHeader* r = header_ptrs[i];  // prendi il puntatore
-        //     std::cout << "------- Record " << i
-        //             << " | key: " << r->key
-        //             << " | len: " << r->len
-        //             << " | original_index: " << r->original_index
-        //             << std::endl;
-        // }
 
         // INVIO solo il vettore ordinato degli indici ordinati
         std::vector<int> original_indices(recv_chunk);
