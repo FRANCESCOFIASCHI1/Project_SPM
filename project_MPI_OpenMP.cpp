@@ -489,23 +489,24 @@ int main(int argc, char *argv[]) {
         // =============================================
     int mpi_records_dim = recordsMPI_OpenMP.size();
     std::cout << "Dimensione totale dei record MPI: " << mpi_records_dim << std::endl;
-    // Invio ai worker le parti da ordinare
-    int chunk_size = mpi_records_dim / (size); // esempio per inviare a rank > 0
-    std::cout << "Invio " << chunk_size << " record a ciascun worker.\n";
-    //printRecords(recordsMPI_OpenMP);
 
-    // Creazione unica array globale
+    // ------------------ CALCOLO CHUNK ------------------
+    int chunk_size = mpi_records_dim / size; // base chunk per rank
+    int resto = mpi_records_dim % size;      // eventuale resto
+    int my_chunk_size = chunk_size + resto;  // rank 0 elabora chunk + resto
+
+    // Creazione array globale di header
     std::vector<RecordHeader> all_headers(mpi_records_dim);
     for (int i = 0; i < mpi_records_dim; i++) {
         all_headers[i].key = recordsMPI_OpenMP[i]->key;
         all_headers[i].len = recordsMPI_OpenMP[i]->len;
-        all_headers[i].original_index = i; // indice globale
+        all_headers[i].original_index = i;
     }
 
+    int start = my_chunk_size;
     for(int i=1; i<size; i++) {
-        int start = (i-1)*chunk_size;
-        int end = (i == size-1) ? mpi_records_dim : start + chunk_size;
-        int current_chunk = end - start;
+        int current_chunk = chunk_size;
+
         std::cout << "Invio " << current_chunk << " record a ciascun worker.\n";
         // invio la dimensione del chunk
         MPI_Send(&current_chunk, 1, MPI_INT, i, 0, MPI_COMM_WORLD);
@@ -515,50 +516,44 @@ int main(int argc, char *argv[]) {
         MPI_Send(all_headers.data() + start, current_chunk * sizeof(RecordHeader), MPI_BYTE, i, 1, MPI_COMM_WORLD);
     }
 
-    // ----------------- RICEZIONE FINALE ORDINATA -------------------
-    int start0 = 0;
-    int end0 = (size == 1) ? mpi_records_dim : chunk_size;
-    int my_chunk_size = end0 - start0;
+// ------------------ ORDINE LOCALE ------------------
+    int local_start, local_size;
+    local_start = 0;
+    local_size = my_chunk_size;
 
-    // Header per il chunk locale
-    std::vector<RecordHeader> headers0(my_chunk_size);
-    for(int j = 0; j < my_chunk_size; j++) {
-        headers0[j].key = recordsMPI_OpenMP[start0 + j]->key;
-        headers0[j].len = recordsMPI_OpenMP[start0 + j]->len;
-        headers0[j].original_index = start0 + j;
-    }
+    // Ordina chunk locale rank 0
+    std::vector<RecordHeader> headers0(local_size);
+    for(int i=0; i<local_size; i++)
+        headers0[i] = all_headers[i];
 
-    // Puntatori agli header per mergeSortParMPI
-    std::vector<RecordHeader*> header_ptrs(my_chunk_size);
-    for(int j = 0; j < my_chunk_size; j++)
-        header_ptrs[j] = &headers0[j];
+    std::vector<RecordHeader*> header_ptrs0(local_size);
+    for(int i=0; i<local_size; i++)
+        header_ptrs0[i] = &headers0[i];
 
-    std::vector<RecordHeader*> tempMPIHead(my_chunk_size);
+    std::vector<RecordHeader*> tempMPIHead(local_size);
 
     #pragma omp parallel
     {
         #pragma omp single
-        mergeSortParMPI(header_ptrs, 0, my_chunk_size - 1, tempMPIHead);
+        mergeSortParMPI(header_ptrs0, 0, local_size-1, tempMPIHead);
     }
 
-    // Ricostruisci vettore globale dei record ordinati
+    // Costruzione vettore globale
     std::vector<Record*> sorted_records(mpi_records_dim);
+    for(int i=0; i<local_size; i++)
+        sorted_records[i] = recordsMPI_OpenMP[header_ptrs0[i]->original_index];
 
-    for(int j = 0; j < my_chunk_size; j++)
-        sorted_records[j] = recordsMPI_OpenMP[header_ptrs[j]->original_index];
+    start = local_size;
+    for(int i = 1; i < size; i++) {
+        int recv_chunk = chunk_size;
+        std::vector<int> original_indices_Sorted(recv_chunk);
+        MPI_Recv(original_indices_Sorted.data(), recv_chunk, MPI_INT, i, 2, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
-    for(int i=1; i<size; i++) {
-        int start = (i-1)*chunk_size;
-        int end = (i == size-1) ? mpi_records_dim : start + chunk_size;
-        int current_chunk = end - start;
-
-        // ricezione headers ordinati
-        std::vector<int> original_indices_Sorted(current_chunk);
-        MPI_Recv(original_indices_Sorted.data(), current_chunk, MPI_INT, i, 2, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-
-        // ricostruisci puntatori originali in ordine corretto
-        for(int j = 0; j < current_chunk; j++)
+        for(int j=0; j<recv_chunk; j++)
             sorted_records[start + j] = recordsMPI_OpenMP[original_indices_Sorted[j]];
+
+        start += recv_chunk;
+        std::cout << "============ DATI RICEVUTI ================ "<<" DATI: " << original_indices_Sorted.size()<<"\n";
     }
 
     printRecords(sorted_records);
