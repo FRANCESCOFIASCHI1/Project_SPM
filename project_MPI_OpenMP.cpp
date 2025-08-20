@@ -24,7 +24,6 @@ struct Record {
 
 struct RecordHeader {
     unsigned long key;
-    unsigned int len;
     size_t original_index;  // posizione nel vettore originale
 };
 
@@ -509,9 +508,9 @@ int main(int argc, char *argv[]) {
 
     // Creazione array globale di header
     std::vector<RecordHeader> all_headers(mpi_records_dim);
+    #pragma omp parallel for
     for (int i = 0; i < mpi_records_dim; i++) {
         all_headers[i].key = recordsMPI_OpenMP[i]->key;
-        all_headers[i].len = recordsMPI_OpenMP[i]->len;
         all_headers[i].original_index = i;
     }
 
@@ -526,6 +525,7 @@ int main(int argc, char *argv[]) {
 
         // invio gli headers solo del chunk_size
         MPI_Send(all_headers.data() + start, current_chunk * sizeof(RecordHeader), MPI_BYTE, i, 1, MPI_COMM_WORLD);
+        
     }
     TIMERSTOP(MPI_Send_Headers);
 
@@ -579,7 +579,7 @@ int main(int argc, char *argv[]) {
                         sorted_records.begin() + local_size);
 
     // fusione iterativa
-    int offset = chunk_size;
+    int offset = my_chunk_size;
     for (int i = 1; i < size; i++) {
         int current_chunk = (i == size-1) ? 
                             (mpi_records_dim - offset) : chunk_size;
@@ -623,6 +623,7 @@ int main(int argc, char *argv[]) {
 
         // Creiamo array di puntatori agli headers per mergeSortPar
         std::vector<RecordHeader*> header_ptrs(recv_chunk);
+        #pragma omp parallel for
         for(int i=0; i<recv_chunk; i++)
             header_ptrs[i] = &headers[i];
 
