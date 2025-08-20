@@ -513,7 +513,7 @@ int main(int argc, char *argv[]) {
     }
     TIMERSTOP(mergeParSort)
 
-    // printRecords(result);
+    printRecords(result);
     // Controllo ordinamento
     for (size_t i = 1; i < recordsCopySeqMerge.size(); ++i)
         if (recordsCopySeqMerge[i-1]->key > recordsCopySeqMerge[i]->key) {
