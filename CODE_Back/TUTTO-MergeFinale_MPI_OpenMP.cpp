@@ -136,13 +136,8 @@ std::vector<Record*> loadRecordsFromFile(const std::string& filename) {
     return records;
 }
 
-void standardSeqSort(vector<Record*>& arr) {
-    std::sort(arr.begin(), arr.end(), [](Record* a, Record* b) {
-        return a->key < b->key;
-    });
-}
-    
-// --- Merge per array di Record* ---
+    // --- Merge per array di Record* ---
+    // --- Merge per array di Record* ---
 void merge(vector<Record*>& arr, int left, int mid, int right, vector<Record*>& temp) {
     int i = left, j = mid + 1, k = left;
     while (i <= mid && j <= right) {
@@ -193,19 +188,6 @@ void mergeSortPar(vector<Record*>& arr, int left, int right, vector<Record*>& te
     merge(arr, left, mid, right, temp);
 }
 
-// // --- MergeSort Parallelizzato MALE -> creazione ed eliminazione di thread crea overhead elevato ---
-// void mergeSortSeq(vector<Record*>& arr, int left, int right, vector<Record*>& temp) {
-//     if (left >= right) return;
-//     int mid = left + (right - left) / 2;
-//     #pragma omp parallel sections
-//     {
-//         #pragma omp section
-//         mergeSortSeq(arr, left, mid, temp);
-//         #pragma omp section
-//         mergeSortSeq(arr, mid + 1, right, temp);
-//     }
-//     merge(arr, left, mid, right, temp);
-// }
 // --- MergeSort SEQ ----
 void mergeSortSeq(vector<Record*>& arr, int left, int right, vector<Record*>& temp) {
     if (left >= right) return;
@@ -451,12 +433,11 @@ int main(int argc, char *argv[]) {
     if(rank == 0) {
         // Caricamento dei record dal file
         auto records = loadRecordsFromFile("records.bin");
-        //printRecords(records);
+        printRecords(records);
         // Copia dei record per il confronto
         std::vector<Record*> recordsCopySeq = records;
         std::vector<Record*> recordsCopyPar = records;
         std::vector<Record*> recordsMPI_OpenMP = records;
-        std::vector<Record*> recordsCopySeqStandard = records;
         // Buffer temporaneo per il merge
         vector<Record*> tempSeq(records.size());
         vector<Record*> tempPar(records.size());
@@ -476,10 +457,6 @@ int main(int argc, char *argv[]) {
         }
         TIMERSTOP(mergeSortPar);
 
-        TIMERSTART(standardSeqSort)
-        standardSeqSort(recordsCopySeqStandard);
-        TIMERSTOP(standardSeqSort);
-
         // Controllo ordinamento
         for (size_t i = 1; i < recordsCopySeq.size(); ++i)
             if (recordsCopySeq[i-1]->key > recordsCopySeq[i]->key) {
@@ -498,10 +475,8 @@ int main(int argc, char *argv[]) {
         // ========= MERGE MPI INCREMENTALE ============
         // =============================================
     int mpi_records_dim = recordsMPI_OpenMP.size();
-    //std::cout << "Dimensione totale dei record MPI: " << mpi_records_dim << std::endl;
-    std::cout << "===============================" << std::endl;
-    std::cout << "========= MPI+OpenMP ==========" << std::endl;
-    std::cout << "===============================" << std::endl;
+    std::cout << "Dimensione totale dei record MPI: " << mpi_records_dim << std::endl;
+
     // ------------------ CALCOLO CHUNK ------------------
     int chunk_size = mpi_records_dim / size; // base chunk per rank
     int resto = mpi_records_dim % size;      // eventuale resto
@@ -515,25 +490,24 @@ int main(int argc, char *argv[]) {
         all_headers[i].original_index = i;
     }
 
-    TIMERSTART(MPI_Send_Headers);
     int start = my_chunk_size;
     for(int i=1; i<size; i++) {
         int current_chunk = chunk_size;
 
-        //std::cout << "Invio " << current_chunk << " record a ciascun worker.\n";
+        std::cout << "Invio " << current_chunk << " record a ciascun worker.\n";
         // invio la dimensione del chunk
         MPI_Send(&current_chunk, 1, MPI_INT, i, 0, MPI_COMM_WORLD);
 
+        std::cout << "Invio " << records[start] << " record a ciascun worker.\n";
         // invio gli headers solo del chunk_size
         MPI_Send(all_headers.data() + start, current_chunk * sizeof(RecordHeader), MPI_BYTE, i, 1, MPI_COMM_WORLD);
     }
-    TIMERSTOP(MPI_Send_Headers);
 
 // ------------------ ORDINE LOCALE ------------------
-    int local_size;
+    int local_start, local_size;
+    local_start = 0;
     local_size = my_chunk_size;
 
-    TIMERSTART(Oridnamento_RANK_0);
     // Ordina chunk locale rank 0
     std::vector<RecordHeader> headers0(local_size);
     for(int i=0; i<local_size; i++)
@@ -566,51 +540,16 @@ int main(int argc, char *argv[]) {
             sorted_records[start + j] = recordsMPI_OpenMP[original_indices_Sorted[j]];
 
         start += recv_chunk;
-        //std::cout << "============ DATI RICEVUTI ================ "<<" DATI: " << original_indices_Sorted.size()<<"\n";
+        std::cout << "============ DATI RICEVUTI ================ "<<" DATI: " << original_indices_Sorted.size()<<"\n";
     }
-    TIMERSTOP(Oridnamento_RANK_0);
 
-    TIMERSTART(Oridnamento_FINALE);
-    std::vector<Record*> final_sorted;
-
-    // copia iniziale del primo chunk
-    final_sorted.insert(final_sorted.end(),
-                        sorted_records.begin(),
-                        sorted_records.begin() + local_size);
-
-    // fusione iterativa
-    int offset = chunk_size;
-    for (int i = 1; i < size; i++) {
-        int current_chunk = (i == size-1) ? 
-                            (mpi_records_dim - offset) : chunk_size;
-
-        std::vector<Record*> merged;
-        merged.reserve(final_sorted.size() + current_chunk);
-
-        std::merge(final_sorted.begin(), final_sorted.end(),
-                sorted_records.begin() + offset,
-                sorted_records.begin() + offset + current_chunk,
-                std::back_inserter(merged),
-                [](Record* a, Record* b) { return a->key < b->key; });
-
-        final_sorted.swap(merged);
-        offset += current_chunk;
-    }
-    TIMERSTOP(Oridnamento_FINALE);
-
-    for (size_t i = 1; i < final_sorted.size(); ++i)
-        if (final_sorted[i-1]->key > final_sorted[i]->key) {
-            cerr << "Errore ordinamento MPI+OpenMP!" << endl;
-        }
-    std::cout<<"====== ORDINAMENTO MPI+OpenMP OK! ======"<<std::endl;
-
-    //printRecords(final_sorted);
+    printRecords(sorted_records);
 
     for (Record* r : records) free(r);
 }
 
     if (rank != 0) {
-        TIMERSTART(Ordinamento_MPI_SubProcess);
+        TIMERSTART(mergeSortMPI_SubProcess);
         // Altri processi non principale
         // Devono ordinare i record dell'array di dimensione chunk_size
         // rank ricevente
@@ -621,7 +560,7 @@ int main(int argc, char *argv[]) {
         std::vector<RecordHeader> headers(recv_chunk);
         MPI_Recv(headers.data(), recv_chunk * sizeof(RecordHeader), MPI_BYTE, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
-        //std::cout << "Rank " << rank << " ha ricevuto " << recv_chunk << " record.\n";
+        std::cout << "Rank " << rank << " ha ricevuto " << recv_chunk << " record.\n";
         // for(auto &r : local_records)
         //     std::cout << "key=" << r.key << "\n";
 
@@ -639,14 +578,14 @@ int main(int argc, char *argv[]) {
             mergeSortParMPI(header_ptrs, 0, header_ptrs.size() - 1, tempMPIHead);
         }
         //printRecords(local_ptrs);
-        // for (size_t i = 0; i < header_ptrs.size(); i++) {
-        //     RecordHeader* r = header_ptrs[i];  // prendi il puntatore
-        //     std::cout << "------- Record " << i
-        //             << " | key: " << r->key
-        //             << " | len: " << r->len
-        //             << " | original_index: " << r->original_index
-        //             << std::endl;
-        // }
+        for (size_t i = 0; i < header_ptrs.size(); i++) {
+            RecordHeader* r = header_ptrs[i];  // prendi il puntatore
+            std::cout << "------- Record " << i
+                    << " | key: " << r->key
+                    << " | len: " << r->len
+                    << " | original_index: " << r->original_index
+                    << std::endl;
+        }
 
         // INVIO solo il vettore ordinato degli indici ordinati
         std::vector<int> original_indices(recv_chunk);
@@ -655,7 +594,7 @@ int main(int argc, char *argv[]) {
 
         MPI_Send(original_indices.data(), recv_chunk, MPI_INT, 0, 2, MPI_COMM_WORLD);
 
-        TIMERSTOP(Ordinamento_MPI_SubProcess);
+        TIMERSTOP(mergeSortMPI_SubProcess);
     }
 
     MPI_Finalize();
