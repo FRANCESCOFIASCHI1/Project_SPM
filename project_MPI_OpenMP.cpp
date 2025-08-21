@@ -52,15 +52,18 @@ Record* createRandomRecord(unsigned int payload_min, unsigned int payload_max) {
 }
 
 
-std::vector<char> saveRecordsToFile(int n, unsigned int payload_max) {
-    
-    int num_threads = 1;
-    #pragma omp parallel
+std::vector<char> saveRecordsToFile(int n, unsigned int payload_max, int num_thread) {
+
+    int num_thread_effettivi;
+    #pragma omp parallel num_threads(num_thread)
     {
-        num_threads = omp_get_num_threads();
+        #pragma omp single
+        {
+            num_thread_effettivi = omp_get_num_threads();
+        }
     }
     // Ogni thread costruisce un buffer locale
-    std::vector<std::vector<char>> thread_buffers(num_threads);
+    std::vector<std::vector<char>> thread_buffers(num_thread_effettivi);
 
     #pragma omp parallel
     {
@@ -277,10 +280,10 @@ void saveRecordsToFile2(const std::string& filename, int n, unsigned int payload
 }
 
     // --- Merge per array di Record* ---
-void mergeMPI(vector<RecordHeader*>& arr, int left, int mid, int right, vector<RecordHeader*>& temp) {
+void mergeMPI(vector<RecordHeader>& arr, int left, int mid, int right, vector<RecordHeader>& temp) {
     int i = left, j = mid + 1, k = left;
     while (i <= mid && j <= right) {
-        if (arr[i]->key <= arr[j]->key)
+        if (arr[i].key <= arr[j].key)
         {
             temp[k] = arr[i];
             k++;
@@ -310,7 +313,7 @@ void mergeMPI(vector<RecordHeader*>& arr, int left, int mid, int right, vector<R
         arr[idx] = temp[idx];
 }
 
-void mergeSortParMPI(vector<RecordHeader*>& arr, int left, int right, vector<RecordHeader*>& temp) {
+void mergeSortParMPI(vector<RecordHeader>& arr, int left, int right, vector<RecordHeader>& temp) {
     if (left >= right) return;
     int mid = left + (right - left) / 2;
     // Crea un task che utilizza i thread creati quando chiamo #pragma omp parrallel
@@ -396,7 +399,7 @@ int main(int argc, char *argv[]) {
         // Record creati dal rank 0
         int my_records = base+resto;
         // Genero my_records numero di record
-        auto local_buffer = saveRecordsToFile(my_records, PAYLOAD_MAX);
+        auto local_buffer = saveRecordsToFile(my_records, PAYLOAD_MAX, num_threads);
         out.write(local_buffer.data(), local_buffer.size());
 
         // Ricevo dai worker
@@ -431,7 +434,7 @@ int main(int argc, char *argv[]) {
         // Ricevo dal rank 0 quanti record devo generare
         MPI_Recv(&n_records, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
-        auto local_buffer = saveRecordsToFile(n_records, PAYLOAD_MAX);
+        auto local_buffer = saveRecordsToFile(n_records, PAYLOAD_MAX, num_threads);
 
         int buf_size = local_buffer.size();
         // 1. invio la dimensione del buffer
@@ -470,7 +473,7 @@ int main(int argc, char *argv[]) {
         #pragma omp parallel
         {
             // Questo è necessario per eseguire la funzione una sola volta
-            #pragma omp single
+            #pragma omp single nowait
             mergeSortPar(recordsCopyPar, 0, recordsCopyPar.size() - 1, tempPar);
         }
         TIMERSTOP(mergeSortPar);
@@ -539,22 +542,22 @@ int main(int argc, char *argv[]) {
     for(int i=0; i<local_size; i++)
         headers0[i] = all_headers[i];
 
-    std::vector<RecordHeader*> header_ptrs0(local_size);
-    for(int i=0; i<local_size; i++)
-        header_ptrs0[i] = &headers0[i];
+    // std::vector<RecordHeader*> header_ptrs0(local_size);
+    // for(int i=0; i<local_size; i++)
+    //     header_ptrs0[i] = &headers0[i];
 
-    std::vector<RecordHeader*> tempMPIHead(local_size);
+    std::vector<RecordHeader> tempMPIHead(local_size);
 
     #pragma omp parallel num_threads(num_threads)
     {
-        #pragma omp single
-        mergeSortParMPI(header_ptrs0, 0, local_size-1, tempMPIHead);
+        #pragma omp single nowait
+        mergeSortParMPI(headers0, 0, local_size-1, tempMPIHead);
     }
 
     // Costruzione vettore globale
     std::vector<Record*> sorted_records(mpi_records_dim);
     for(int i=0; i<local_size; i++)
-        sorted_records[i] = recordsMPI_OpenMP[header_ptrs0[i]->original_index];
+        sorted_records[i] = recordsMPI_OpenMP[headers0[i].original_index];
 
     start = local_size;
     for(int i = 1; i < size; i++) {
@@ -622,24 +625,24 @@ int main(int argc, char *argv[]) {
         MPI_Recv(headers.data(), recv_chunk * sizeof(RecordHeader), MPI_BYTE, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
         // Creiamo array di puntatori agli headers per mergeSortPar
-        std::vector<RecordHeader*> header_ptrs(recv_chunk);
-        #pragma omp parallel for
-        for(int i=0; i<recv_chunk; i++)
-            header_ptrs[i] = &headers[i];
+        // std::vector<RecordHeader*> header_ptrs(recv_chunk);
+        // #pragma omp parallel for
+        // for(int i=0; i<recv_chunk; i++)
+        //     header_ptrs[i] = &headers[i];
 
-        std::vector<RecordHeader*> tempMPIHead(recv_chunk);
+        std::vector<RecordHeader> tempMPIHead(recv_chunk);
 
         #pragma omp parallel
         {
             // Questo è necessario per eseguire la funzione una sola volta
             #pragma omp single
-            mergeSortParMPI(header_ptrs, 0, header_ptrs.size() - 1, tempMPIHead);
+            mergeSortParMPI(headers, 0, headers.size() - 1, tempMPIHead);
         }
 
         // INVIO solo il vettore ordinato degli indici ordinati
         std::vector<int> original_indices(recv_chunk);
         for(int i = 0; i < recv_chunk; i++)
-            original_indices[i] = header_ptrs[i]->original_index;
+            original_indices[i] = headers[i].original_index;
 
         MPI_Send(original_indices.data(), recv_chunk, MPI_INT, 0, 2, MPI_COMM_WORLD);
 
