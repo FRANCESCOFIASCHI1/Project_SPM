@@ -188,10 +188,17 @@ void mergeSortPar(vector<Record*>& arr, int left, int right, vector<Record*>& te
     // Se lo utilizzo qui ogni volta che effettuo una ricorsione creo un team di thread
 
     // Devo condividere le variabili arr e temp dato che le due parti eseguite dai thread modificano l'array e temp
-    #pragma omp task shared(arr, temp)
-    mergeSortPar(arr, left, mid, temp);
-    #pragma omp task shared(arr, temp)
-    mergeSortPar(arr, mid + 1, right, temp);
+    if (right - left > 400) { // solo grandi segmenti diventano task
+        #pragma omp task shared(arr, temp)
+        mergeSortPar(arr, left, mid, temp);
+        #pragma omp task shared(arr, temp)
+        mergeSortPar(arr, mid + 1, right, temp);
+        #pragma omp taskwait
+    } else {
+        mergeSortPar(arr, left, mid, temp);
+        mergeSortPar(arr, mid + 1, right, temp);
+    }
+
     // Aspetta che tutte le task precedenti siano completate
     // Aspetta che tutte le due parti dell'array siano ordinate prima di fare il merge altrimenti il merge non funziona
     #pragma omp taskwait
@@ -225,7 +232,7 @@ int main(int argc, char *argv[]) {
     unsigned int PAYLOAD_MAX = 1024; // default
 
     unsigned long array_size = 1000; 
-    unsigned int num_threads = 16;
+    unsigned int num_threads = 0;
 
     int opt;
     while ((opt = getopt(argc, argv, "s:t:p:")) != -1) {
@@ -278,12 +285,19 @@ int main(int argc, char *argv[]) {
     TIMERSTART(mergeSortPar);
     // Utilizzo questa direttiva per creare il pool di thread che verra utilizzato dal mergeSort
     // Riutilizzo i thread così non ho overhead per crearli e distruggerli
-    #pragma omp parallel
-    {
-        // Questo è necessario per eseguire la funzione una sola volta
-        #pragma omp single
-        mergeSortPar(recordsCopyPar, 0, recordsCopyPar.size() - 1, tempPar);
-    }
+    if (num_threads > 0) {
+        #pragma omp parallel num_threads(num_threads)
+        {
+            #pragma omp single
+            mergeSortPar(recordsCopyPar, 0, recordsCopyPar.size() - 1, tempPar);
+        }
+        } else {
+            #pragma omp parallel
+            {
+                #pragma omp single
+                mergeSortPar(recordsCopyPar, 0, recordsCopyPar.size() - 1, tempPar);
+            }
+        }
     TIMERSTOP(mergeSortPar);
 
     // Controllo ordinamento

@@ -416,11 +416,11 @@ int main(int argc, char *argv[]) {
         out.close();
         TIMERSTOP(saveRecordsToFile_MainProcess);
 
-        TIMERSTART(saveRecordsToFile2);
-        // CREARE VARIABILE DA AFFIDARE A PAYLOAD_MAX da linea di comando
-        // Generazione record casuali
-        saveRecordsToFile2("records2.bin", array_size, PAYLOAD_MAX);
-        TIMERSTOP(saveRecordsToFile2);
+        // TIMERSTART(saveRecordsToFile2);
+        // // CREARE VARIABILE DA AFFIDARE A PAYLOAD_MAX da linea di comando
+        // // Generazione record casuali
+        // saveRecordsToFile2("records2.bin", array_size, PAYLOAD_MAX);
+        // TIMERSTOP(saveRecordsToFile2);
     }
     else {
         TIMERSTART(saveRecordsToFile_SubProcess);
@@ -485,45 +485,45 @@ int main(int argc, char *argv[]) {
         // auto records = loadRecordsFromFile("records.bin");
         // printRecords(records);
         // Copia dei record per il confronto
-        std::vector<Record*> recordsCopySeq = records;
-        std::vector<Record*> recordsCopyPar = records;
+        // std::vector<Record*> recordsCopySeq = records;
+        // std::vector<Record*> recordsCopyPar = records;
         std::vector<Record*> recordsMPI_OpenMP = records;
-        std::vector<Record*> recordsCopySeqStandard = records;
+        // std::vector<Record*> recordsCopySeqStandard = records;
         // Buffer temporaneo per il merge
-        vector<Record*> tempSeq(records.size());
-        vector<Record*> tempPar(records.size());
+        // vector<Record*> tempSeq(records.size());
+        // vector<Record*> tempPar(records.size());
         // MERGE SORT SEQUENZIALE
-        TIMERSTART(mergeSortSeq);
-        mergeSortSeq(recordsCopySeq, 0, recordsCopySeq.size() - 1, tempSeq);
-        TIMERSTOP(mergeSortSeq);
+        // TIMERSTART(mergeSortSeq);
+        // mergeSortSeq(recordsCopySeq, 0, recordsCopySeq.size() - 1, tempSeq);
+        // TIMERSTOP(mergeSortSeq);
 
-        TIMERSTART(mergeSortPar);
-        // Utilizzo questa direttiva per creare il pool di thread che verra utilizzato dal mergeSort
-        // Riutilizzo i thread così non ho overhead per crearli e distruggerli
-        #pragma omp parallel
-        {
-            // Questo è necessario per eseguire la funzione una sola volta
-            #pragma omp single nowait
-            mergeSortPar(recordsCopyPar, 0, recordsCopyPar.size() - 1, tempPar);
-        }
-        TIMERSTOP(mergeSortPar);
+        // TIMERSTART(mergeSortPar);
+        // // Utilizzo questa direttiva per creare il pool di thread che verra utilizzato dal mergeSort
+        // // Riutilizzo i thread così non ho overhead per crearli e distruggerli
+        // #pragma omp parallel
+        // {
+        //     // Questo è necessario per eseguire la funzione una sola volta
+        //     #pragma omp single nowait
+        //     mergeSortPar(recordsCopyPar, 0, recordsCopyPar.size() - 1, tempPar);
+        // }
+        // TIMERSTOP(mergeSortPar);
 
-        TIMERSTART(standardSeqSort)
-        standardSeqSort(recordsCopySeqStandard);
-        TIMERSTOP(standardSeqSort);
+        // TIMERSTART(standardSeqSort)
+        // standardSeqSort(recordsCopySeqStandard);
+        // TIMERSTOP(standardSeqSort);
 
         // Controllo ordinamento
-        for (size_t i = 1; i < recordsCopySeq.size(); ++i)
-            if (recordsCopySeq[i-1]->key > recordsCopySeq[i]->key) {
-                cerr << "Errore ordinamento Sequenziale!" << endl;
-            }
+        // for (size_t i = 1; i < recordsCopySeq.size(); ++i)
+        //     if (recordsCopySeq[i-1]->key > recordsCopySeq[i]->key) {
+        //         cerr << "Errore ordinamento Sequenziale!" << endl;
+        //     }
 
-        for (size_t i = 1; i < recordsCopyPar.size(); ++i)
-            if (recordsCopyPar[i-1]->key > recordsCopyPar[i]->key) {
-                cerr << "Errore ordinamento Parallelo!" << endl;
-        }
+        // for (size_t i = 1; i < recordsCopyPar.size(); ++i)
+        //     if (recordsCopyPar[i-1]->key > recordsCopyPar[i]->key) {
+        //         cerr << "Errore ordinamento Parallelo!" << endl;
+        // }
 
-        cout << "========MergeSort completato correttamente su " << array_size << " record.==========" << endl;
+        // cout << "========MergeSort completato correttamente su " << array_size << " record.==========" << endl;
         //printRecords(records);
         
         // ============================================
