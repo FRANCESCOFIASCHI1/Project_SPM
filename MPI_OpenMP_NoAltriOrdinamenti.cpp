@@ -515,9 +515,8 @@ int main(int argc, char *argv[]) {
 
     TIMERSTART(MPI_Recv_OriginalIndex_eOrdinamento);
     for(int i = 1; i < size; i++) {
-        int recv_chunk = sendcounts[i];
-        std::vector<int> original_indices_Sorted(recv_chunk);
-        MPI_Irecv(original_indices_Sorted.data(), recv_chunk, MPI_INT, i, 2, MPI_COMM_WORLD, &requests[i-1]);recv_buffers[i-1] = std::move(original_indices_Sorted);
+        std::vector<int> original_indices_Sorted(sendcounts[i]);
+        MPI_Irecv(original_indices_Sorted.data(), sendcounts[i], MPI_INT, i, 2, MPI_COMM_WORLD, &requests[i-1]);recv_buffers[i-1] = std::move(original_indices_Sorted);
         //std::cout << "============ DATI RICEVUTI ================ "<<" DATI: " << original_indices_Sorted.size()<<"\n";
     }
 
@@ -544,7 +543,7 @@ int main(int argc, char *argv[]) {
     MPI_Waitall(size - 1, requests.data(), MPI_STATUSES_IGNORE);
 
     // Copi nei vettori globali solo dopo che sei sicuro che i dati sono arrivati
-    int start = my_chunk_size;
+    int start = sendcounts[0];
     for(int i = 1; i < size; i++) {
         for(int j = 0; j < sendcounts[i]; j++)
             sorted_records[start + j] = recordsMPI_OpenMP[recv_buffers[i-1][j]];
@@ -609,14 +608,6 @@ int main(int argc, char *argv[]) {
             0,
             MPI_COMM_WORLD  
         );
-
-
-
-        // Creiamo array di puntatori agli headers per mergeSortPar
-        // std::vector<RecordHeader*> header_ptrs(recv_chunk);
-        // #pragma omp parallel for
-        // for(int i=0; i<recv_chunk; i++)
-        //     header_ptrs[i] = &headers[i];
 
         std::vector<RecordHeader> tempMPIHead(my_chunk_size);
 
