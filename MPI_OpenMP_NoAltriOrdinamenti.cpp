@@ -433,7 +433,7 @@ int main(int argc, char *argv[]) {
     // saveRecordsToFile("records.bin", array_size, PAYLOAD_MAX);
     // TIMERSTOP(saveRecordsToFile);
 
-   MPI_Datatype MPI_RecordHeader;
+    MPI_Datatype MPI_RecordHeader;
     MPI_Type_contiguous(sizeof(RecordHeader), MPI_BYTE, &MPI_RecordHeader);
     MPI_Type_commit(&MPI_RecordHeader);
 
@@ -477,14 +477,8 @@ int main(int argc, char *argv[]) {
     std::cout << "========= MPI+OpenMP ==========" << std::endl;
     std::cout << "===============================" << std::endl;
     // ------------------ CALCOLO CHUNK ------------------
-    int chunk_size = mpi_records_dim / size; // base chunk per rank
-    int resto = mpi_records_dim % size;      // eventuale resto
-    int my_chunk_size = chunk_size + resto;  // rank 0 elabora chunk + resto
-
-    for (int i = 0; i < size; i++) {
-        sendcounts[i] = chunk_size + (i == 0 ? resto : 0); // rank 0 prende anche il resto
-        displs[i] = (i == 0) ? 0 : displs[i-1] + sendcounts[i-1];
-    }
+    int chunk_size = base_chunk; // base chunk per rank
+    int my_chunk_size = sendcounts[0];  // rank 0 elabora chunk + resto
 
     // Creazione array globale di header
     std::vector<RecordHeader> all_headers(mpi_records_dim);
@@ -495,10 +489,6 @@ int main(int argc, char *argv[]) {
     }
 
     TIMERSTART(MPI_Send_Headers);
-
-    MPI_Datatype MPI_RecordHeader;
-    MPI_Type_contiguous(sizeof(RecordHeader), MPI_BYTE, &MPI_RecordHeader);
-    MPI_Type_commit(&MPI_RecordHeader);
 
 
     std::vector<RecordHeader> local_headers(my_chunk_size);
@@ -530,10 +520,9 @@ int main(int argc, char *argv[]) {
     TIMERSTART(MPI_Recv_OriginalIndex_eOrdinamento);
     int start = local_size;
     for(int i = 1; i < size; i++) {
-        int recv_chunk = chunk_size;
+        int recv_chunk = sendcounts[i];
         std::vector<int> original_indices_Sorted(recv_chunk);
         MPI_Irecv(original_indices_Sorted.data(), recv_chunk, MPI_INT, i, 2, MPI_COMM_WORLD, &requests[i-1]);recv_buffers[i-1] = std::move(original_indices_Sorted);
-
         //std::cout << "============ DATI RICEVUTI ================ "<<" DATI: " << original_indices_Sorted.size()<<"\n";
     }
 
@@ -561,7 +550,7 @@ int main(int argc, char *argv[]) {
 
     // Copi nei vettori globali solo dopo che sei sicuro che i dati sono arrivati
     for(int i = 1; i < size; i++) {
-        int recv_chunk = chunk_size;
+        int recv_chunk = sendcounts[i];
         for(int j = 0; j < recv_chunk; j++)
             sorted_records[start + j] = recordsMPI_OpenMP[recv_buffers[i-1][j]];
         start += recv_chunk;
@@ -606,7 +595,6 @@ int main(int argc, char *argv[]) {
     //printRecords(final_sorted);
 
     for (Record* r : records) free(r);
-    MPI_Type_free(&MPI_RecordHeader);
 }
 
     if (rank != 0) {
@@ -617,16 +605,17 @@ int main(int argc, char *argv[]) {
         // rank ricevente
         std::vector<RecordHeader> local_headers(my_chunk_size);
         MPI_Scatterv(
-            nullptr,
-            nullptr,
-            nullptr,
-            MPI_BYTE,
-            local_headers.data(),
-            my_chunk_size * sizeof(RecordHeader),
-            MPI_BYTE,
+            nullptr,     // valido solo per rank 0
+            sendcounts.data(),      
+            displs.data(),          
+            MPI_RecordHeader,
+            local_headers.data(),   // ognuno riceve qui
+            my_chunk_size,          // numero elementi locali
+            MPI_RecordHeader,
             0,
-            MPI_COMM_WORLD
+            MPI_COMM_WORLD  
         );
+
 
 
         // Creiamo array di puntatori agli headers per mergeSortPar
@@ -656,6 +645,7 @@ int main(int argc, char *argv[]) {
         // std::cout << "Tempo Ordinamento MPI SubProcess (rank " << rank << "): " << T_end - T_start << " secondi" << std::endl;
     }
 
+    MPI_Type_free(&MPI_RecordHeader);
     MPI_Finalize();
     return 0;
 }
