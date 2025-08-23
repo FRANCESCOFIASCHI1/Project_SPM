@@ -477,7 +477,6 @@ int main(int argc, char *argv[]) {
     std::cout << "========= MPI+OpenMP ==========" << std::endl;
     std::cout << "===============================" << std::endl;
     // ------------------ CALCOLO CHUNK ------------------
-    int chunk_size = base_chunk; // base chunk per rank
     int my_chunk_size = sendcounts[0];  // rank 0 elabora chunk + resto
 
     // Creazione array globale di header
@@ -508,9 +507,6 @@ int main(int argc, char *argv[]) {
     TIMERSTOP(MPI_Send_Headers);
 
 // ------------------ ORDINE LOCALE ------------------
-    int local_size;
-    local_size = my_chunk_size;
-
     // Costruzione vettore globale
     std::vector<Record*> sorted_records(mpi_records_dim);
     // Per fare la ricezione dei dati ordinati -> con Irecv
@@ -518,7 +514,6 @@ int main(int argc, char *argv[]) {
     std::vector<std::vector<int>> recv_buffers(size-1);
 
     TIMERSTART(MPI_Recv_OriginalIndex_eOrdinamento);
-    int start = local_size;
     for(int i = 1; i < size; i++) {
         int recv_chunk = sendcounts[i];
         std::vector<int> original_indices_Sorted(recv_chunk);
@@ -528,19 +523,19 @@ int main(int argc, char *argv[]) {
 
     TIMERSTART(Oridnamento_RANK_0)
     // Ordina chunk locale rank 0
-    std::vector<RecordHeader> headers0(local_size);
-    for(int i=0; i<local_size; i++)
+    std::vector<RecordHeader> headers0(my_chunk_size);
+    for(int i=0; i<my_chunk_size; i++)
         headers0[i] = all_headers[i];
 
-    std::vector<RecordHeader> tempMPIHead(local_size);
+    std::vector<RecordHeader> tempMPIHead(my_chunk_size);
 
     #pragma omp parallel num_threads(num_threads)
     {
         #pragma omp single nowait
-        mergeSortParMPI(headers0, 0, local_size-1, tempMPIHead);
+        mergeSortParMPI(headers0, 0, my_chunk_size-1, tempMPIHead);
     }
 
-    for(int i=0; i<local_size; i++)
+    for(int i=0; i<my_chunk_size; i++)
         sorted_records[i] = recordsMPI_OpenMP[headers0[i].original_index];
     TIMERSTOP(Oridnamento_RANK_0);
 
@@ -549,12 +544,13 @@ int main(int argc, char *argv[]) {
     MPI_Waitall(size - 1, requests.data(), MPI_STATUSES_IGNORE);
 
     // Copi nei vettori globali solo dopo che sei sicuro che i dati sono arrivati
+    int start = my_chunk_size;
     for(int i = 1; i < size; i++) {
-        int recv_chunk = sendcounts[i];
-        for(int j = 0; j < recv_chunk; j++)
+        for(int j = 0; j < sendcounts[i]; j++)
             sorted_records[start + j] = recordsMPI_OpenMP[recv_buffers[i-1][j]];
-        start += recv_chunk;
+        start += sendcounts[i];
     }
+
 
     TIMERSTOP(MPI_Recv_OriginalIndex_eOrdinamento);
 
@@ -564,25 +560,23 @@ int main(int argc, char *argv[]) {
     // copia iniziale del primo chunk
     final_sorted.insert(final_sorted.end(),
                         sorted_records.begin(),
-                        sorted_records.begin() + local_size);
+                        sorted_records.begin() + my_chunk_size);
 
     // fusione iterativa
-    int offset = my_chunk_size;
+    int offset = sendcounts[0];
     for (int i = 1; i < size; i++) {
-        int current_chunk = (i == size-1) ? 
-                            (mpi_records_dim - offset) : chunk_size;
 
         std::vector<Record*> merged;
-        merged.reserve(final_sorted.size() + current_chunk);
+        merged.reserve(final_sorted.size() + sendcounts[i]);
 
         std::merge(final_sorted.begin(), final_sorted.end(),
                 sorted_records.begin() + offset,
-                sorted_records.begin() + offset + current_chunk,
+                sorted_records.begin() + offset + sendcounts[i],
                 std::back_inserter(merged),
                 [](Record* a, Record* b) { return a->key < b->key; });
 
         final_sorted.swap(merged);
-        offset += current_chunk;
+        offset += sendcounts[i];
     }
     TIMERSTOP(Oridnamento_FINALE);
 
