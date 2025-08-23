@@ -11,6 +11,8 @@
 #include <fstream>
 #include "fastflow/ff/ff.hpp"
 #include "fastflow/ff/dc.hpp"
+// #include <ff/ff.hpp>
+// #include <ff/dc.hpp>
 
 #include <omp.h>
 
@@ -393,7 +395,7 @@ int main(int argc, char *argv[]) {
     unsigned int PAYLOAD_MAX = 1000; // default
 
     unsigned long array_size = 1000; 
-    unsigned int num_threads = 16;
+    int num_threads = 16;
 
     int opt;
     while ((opt = getopt(argc, argv, "s:t:p:")) != -1) {

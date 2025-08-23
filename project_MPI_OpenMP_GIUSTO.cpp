@@ -7,6 +7,8 @@
 #include <iostream>
 #include <fstream>
 #include <random>
+#include <algorithm>
+#include <cstring>
 #include "hpc_helpers.hpp"   
 
 // Direttive OpenOMP -> usare (-fopenmp) per compilare
