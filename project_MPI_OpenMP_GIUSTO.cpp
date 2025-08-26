@@ -102,7 +102,6 @@ std::vector<char> saveRecordsToFile(int n, unsigned int payload_max, int num_thr
     return final_buffer;
 }
 
-
 std::vector<Record*> loadRecordsFromFile(const std::string& filename) {
     std::vector<Record*> records;
     std::ifstream in(filename, std::ios::binary);
@@ -110,26 +109,25 @@ std::vector<Record*> loadRecordsFromFile(const std::string& filename) {
         std::cerr << "Errore apertura file " << filename << "\n";
         return records;
     }
-
     while (true) {
         unsigned long key;
         unsigned int len;
 
-        // Leggo header
         in.read(reinterpret_cast<char*>(&key), sizeof(key));
-        if (!in) break; // fine file
+        if (!in) break;
 
         in.read(reinterpret_cast<char*>(&len), sizeof(len));
 
-        // Alloco record in memoria
-        Record* rec = (Record*) malloc(sizeof(Record) + len);
+        // Alloco solo l'header, senza payload
+        Record* rec = (Record*) malloc(sizeof(Record));
         rec->key = key;
         rec->len = len;
-
-        // Leggo payload
-        in.read(reinterpret_cast<char*>(rec->payload), len);
+        // rec->payload non viene letto, risparmio memoria e tempo
 
         records.push_back(rec);
+
+        // Salto i byte del payload
+        in.seekg(len, std::ios::cur);
     }
 
     in.close();

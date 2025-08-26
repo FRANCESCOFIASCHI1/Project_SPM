@@ -95,31 +95,31 @@ std::vector<Record*> loadRecordsFromFile(const std::string& filename) {
         std::cerr << "Errore apertura file " << filename << "\n";
         return records;
     }
-
     while (true) {
         unsigned long key;
         unsigned int len;
 
-        // Leggo header
         in.read(reinterpret_cast<char*>(&key), sizeof(key));
-        if (!in) break; // fine file
+        if (!in) break;
 
         in.read(reinterpret_cast<char*>(&len), sizeof(len));
 
-        // Alloco record in memoria
-        Record* rec = (Record*) malloc(sizeof(Record) + len);
+        // Alloco solo l'header, senza payload
+        Record* rec = (Record*) malloc(sizeof(Record));
         rec->key = key;
         rec->len = len;
-
-        // Leggo payload -> Posso evitare così risparmio memoria dato che ordino per la chiave
-        in.read(reinterpret_cast<char*>(rec->payload), len); // Leggo comunque così posso stamparlo
+        // rec->payload non viene letto, risparmio memoria e tempo
 
         records.push_back(rec);
+
+        // Salto i byte del payload
+        in.seekg(len, std::ios::cur);
     }
 
     in.close();
     return records;
 }
+
 
     // --- Merge per array di Record* ---
 void mergeSeq(vector<Record*>& arr, int left, int mid, int right, vector<Record*>& temp) {
@@ -393,7 +393,7 @@ int main(int argc, char *argv[]) {
     unsigned int PAYLOAD_MAX = 1000; // default
 
     unsigned long array_size = 1000; 
-    unsigned int num_threads = 16;
+    int num_threads = 16;
 
     int opt;
     while ((opt = getopt(argc, argv, "s:t:p:")) != -1) {
@@ -461,11 +461,11 @@ int main(int argc, char *argv[]) {
 
     // CREARE VARIABILE DA AFFIDARE A PAYLOAD_MAX da linea di comando
     // Generazione record casuali
-    TIMERSTART(saveRecordsToFile);
-    // CREARE VARIABILE DA AFFIDARE A PAYLOAD_MAX da linea di comando
-    // Generazione record casuali
-    saveRecordsToFile("records2.bin", array_size, PAYLOAD_MAX);
-    TIMERSTOP(saveRecordsToFile);
+    // TIMERSTART(saveRecordsToFile);
+    // // CREARE VARIABILE DA AFFIDARE A PAYLOAD_MAX da linea di comando
+    // // Generazione record casuali
+    // saveRecordsToFile("records2.bin", array_size, PAYLOAD_MAX);
+    // TIMERSTOP(saveRecordsToFile);
     
     out.close();
     // Caricamento dei record dal file
@@ -482,9 +482,9 @@ int main(int argc, char *argv[]) {
     std::vector<Record*> recordsCopySeqStandard = records;
     std::vector<Record*> recordsCopyPar = records;
 
-    TIMERSTART(mergeSortSeq)
-    mergeSortSeq(recordsCopySeqMerge, 0, recordsCopySeqMerge.size() - 1, temp);
-    TIMERSTOP(mergeSortSeq)
+    // TIMERSTART(mergeSortSeq)
+    // mergeSortSeq(recordsCopySeqMerge, 0, recordsCopySeqMerge.size() - 1, temp);
+    // TIMERSTOP(mergeSortSeq)
 
     TIMERSTART(standardSeqSort)
     standardSeqSort(recordsCopySeqStandard);
@@ -515,10 +515,10 @@ int main(int argc, char *argv[]) {
 
     // printRecords(result);
     // Controllo ordinamento
-    for (size_t i = 1; i < recordsCopySeqMerge.size(); ++i)
-        if (recordsCopySeqMerge[i-1]->key > recordsCopySeqMerge[i]->key) {
-            cerr << "Errore ordinamento Sequenziale Merge!" << endl;
-        }
+    // for (size_t i = 1; i < recordsCopySeqMerge.size(); ++i)
+    //     if (recordsCopySeqMerge[i-1]->key > recordsCopySeqMerge[i]->key) {
+    //         cerr << "Errore ordinamento Sequenziale Merge!" << endl;
+    //     }
 
     for (size_t i = 1; i < recordsCopySeqStandard.size(); ++i)
         if (recordsCopySeqStandard[i-1]->key > recordsCopySeqStandard[i]->key) {

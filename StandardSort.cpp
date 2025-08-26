@@ -227,6 +227,13 @@ void printRecords(const std::vector<Record*>& records, size_t max_payload_bytes 
 }
 
 
+void standardSeqSort(vector<Record*>& arr) {
+    std::sort(arr.begin(), arr.end(), [](Record* a, Record* b) {
+        return a->key < b->key;
+    });
+}
+
+
 int main(int argc, char *argv[]) {
     srand(time(NULL));
 
@@ -273,46 +280,17 @@ int main(int argc, char *argv[]) {
     auto records = loadRecordsFromFile("records.bin");
     //printRecords(records);
     // Copia dei record per il confronto
-    std::vector<Record*> recordsCopySeq = records;
-    std::vector<Record*> recordsCopyPar = records;
-    // Buffer temporaneo per il merge
-    vector<Record*> tempSeq(records.size());
-    vector<Record*> tempPar(records.size());
-    // MERGE SORT SEQUENZIALE
-    TIMERSTART(mergeSortSeq);
-    mergeSortSeq(recordsCopySeq, 0, recordsCopySeq.size() - 1, tempSeq);
-    TIMERSTOP(mergeSortSeq);
-
-    TIMERSTART(mergeSortPar);
-    // Utilizzo questa direttiva per creare il pool di thread che verra utilizzato dal mergeSort
-    // Riutilizzo i thread così non ho overhead per crearli e distruggerli
-    if (num_threads > 0) {
-        #pragma omp parallel num_threads(num_threads)
-        {
-            #pragma omp single
-            mergeSortPar(recordsCopyPar, 0, recordsCopyPar.size() - 1, tempPar);
-        }
-        } else {
-            #pragma omp parallel
-            {
-                #pragma omp single
-                mergeSortPar(recordsCopyPar, 0, recordsCopyPar.size() - 1, tempPar);
-            }
-        }
-    TIMERSTOP(mergeSortPar);
-
+    std::vector<Record*> standardSortRecord = records;
+    TIMERSTART(standardSortRecord);
+    standardSeqSort(standardSortRecord);
+    TIMERSTOP(standardSortRecord);
     // Controllo ordinamento
-    for (size_t i = 1; i < recordsCopySeq.size(); ++i)
-        if (recordsCopySeq[i-1]->key > recordsCopySeq[i]->key) {
+    for (size_t i = 1; i < standardSortRecord.size(); ++i)
+        if (standardSortRecord[i-1]->key > standardSortRecord[i]->key) {
             cerr << "Errore ordinamento Sequenziale!" << endl;
         }
 
-    for (size_t i = 1; i < recordsCopyPar.size(); ++i)
-        if (recordsCopyPar[i-1]->key > recordsCopyPar[i]->key) {
-            cerr << "Errore ordinamento Parallelo!" << endl;
-    }
-
-    cout << "========MergeSort completato correttamente su " << array_size << " record.==========" << endl;
+    cout << "========StandardSort completato correttamente su " << array_size << " record.==========" << endl;
     //printRecords(records);
     
 
