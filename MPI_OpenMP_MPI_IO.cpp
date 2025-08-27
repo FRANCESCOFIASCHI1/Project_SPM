@@ -322,7 +322,7 @@ int main(int argc, char *argv[]) {
 
     // Apertura file MPI
     MPI_File fh;
-    MPI_File_open(MPI_COMM_WORLD, "records_mpi.bin", MPI_MODE_CREATE | MPI_MODE_WRONLY, MPI_INFO_NULL, &fh);
+    MPI_File_open(MPI_COMM_WORLD, "records_OpenMP.bin", MPI_MODE_CREATE | MPI_MODE_WRONLY, MPI_INFO_NULL, &fh);
 
     // Scrittura diretta nel file all'offset calcolato
     // Tutti i processi scrivono in parallelo
@@ -336,7 +336,7 @@ int main(int argc, char *argv[]) {
     TIMERSTOP(saveRecordsToFile_MPI);
     // // CREARE VARIABILE DA AFFIDARE A PAYLOAD_MAX da linea di comando
     // // Generazione record casuali
-    // saveRecordsToFile("records.bin", array_size, PAYLOAD_MAX);
+    // saveRecordsToFile("records_OpenMP.bin", array_size, PAYLOAD_MAX);
     // TIMERSTOP(saveRecordsToFile);
 
     MPI_Datatype MPI_RecordHeader;
@@ -346,7 +346,7 @@ int main(int argc, char *argv[]) {
     int mpi_records_dim = 0;
     std::vector<Record*> records;
     if (rank == 0) {
-        records = loadRecordsFromFile("records.bin"); // solo root legge
+        records = loadRecordsFromFile("records_OpenMP.bin"); // solo root legge
         mpi_records_dim = records.size();
         // eventualmente crea all_headers qui
     }

@@ -56,55 +56,6 @@ Record* createRandomRecord(unsigned int payload_min, unsigned int payload_max) {
     return rec;
 }
 
-
-std::vector<char> saveRecordsToFile(int n, unsigned int payload_max, int num_thread) {
-
-    // Ogni thread costruisce un buffer locale
-    std::vector<std::vector<char>> thread_buffers(num_thread);
-
-    #pragma omp parallel num_threads(num_thread)
-    {
-        
-        int id = omp_get_thread_num();
-        // int n_threads = omp_get_num_threads();  // Numero di thread attivi in questo team
-
-        // #pragma omp single
-        //     std::cout << "Numero di thread in uso: " << n_threads << std::endl;
-        auto& local_buffer = thread_buffers[id];
-
-        #pragma omp for
-        for (int i = 0; i < n; i++) {
-            Record* rec = createRandomRecord(8, payload_max); // Record creato
-
-            size_t offset = local_buffer.size(); // Creo offset per sapere da dove partire a scrivere i dati e ad ogni iterazione sposto l'offset della dimensione dei dati contenuti in local buffer
-            local_buffer.resize(offset + sizeof(rec->key) + sizeof(rec->len) + rec->len);
-
-            std::memcpy(local_buffer.data() + offset, &rec->key, sizeof(rec->key)); // Scrivo la chiave nel buffer
-            offset += sizeof(rec->key);
-
-            std::memcpy(local_buffer.data() + offset, &rec->len, sizeof(rec->len)); // Scrivo la lunghezza del payload nel buffer
-            offset += sizeof(rec->len);
-
-            std::memcpy(local_buffer.data() + offset, rec->payload, rec->len); // Scrivo 
-
-            free(rec);
-        }
-    }
-    // Concateno i buffer dei thread
-    std::vector<char> final_buffer;
-    size_t total_size = 0;
-    for (auto& buf : thread_buffers) {
-        total_size += buf.size();
-    }
-    final_buffer.reserve(total_size);
-
-    for (auto& buf : thread_buffers) {
-        final_buffer.insert(final_buffer.end(), buf.begin(), buf.end());
-    }
-
-    return final_buffer;
-}
-
 std::vector<Record*> loadRecordsFromFile(const std::string& filename) {
     std::vector<Record*> records;
     std::ifstream in(filename, std::ios::binary);
@@ -172,7 +123,6 @@ void merge(vector<Record*>& arr, int left, int mid, int right, vector<Record*>& 
         k++;
         j++;
     }
-    #pragma omp parallel for
     for (int idx = left; idx <= right; idx++)
         arr[idx] = temp[idx];
 }
@@ -197,59 +147,20 @@ void printRecords(const std::vector<Record*>& records, size_t max_payload_bytes 
     }
 }
 
-    // --- Merge per array di Record* ---
-void mergeMPI(vector<RecordHeader>& arr, int left, int mid, int right, vector<RecordHeader>& temp) {
-    int i = left, j = mid + 1, k = left;
-    while (i <= mid && j <= right) {
-        if (arr[i].key <= arr[j].key)
-        {
-            temp[k] = arr[i];
-            k++;
-            i++;
-        }
-        else
-        {
-            temp[k] = arr[j];
-            k++;
-            j++;
-        }
-    }
-    while (i <= mid) 
-    {
-        temp[k] = arr[i];
-        k++;
-        i++;
-    }
-    while (j <= right)
-    {
-        temp[k] = arr[j];
-        k++;
-        j++;
-    }
-    #pragma omp parallel for
-    for (int idx = left; idx <= right; idx++)
-        arr[idx] = temp[idx];
-}
-
-void mergeSortParMPI(vector<RecordHeader>& arr, int left, int right, vector<RecordHeader>& temp) {
-    if (left >= right) return;
-    int mid = left + (right - left) / 2;
-    // Crea un task che utilizza i thread creati quando chiamo #pragma omp parrallel
-    // Se lo utilizzo qui ogni volta che effettuo una ricorsione creo un team di thread
-
-    // Devo condividere le variabili arr e temp dato che le due parti eseguite dai thread modificano l'array e temp
-    #pragma omp task shared(arr, temp)
-    mergeSortParMPI(arr, left, mid, temp);
-    #pragma omp task shared(arr, temp)
-    mergeSortParMPI(arr, mid + 1, right, temp);
-    // Aspetta che tutte le task precedenti siano completate
-    // Aspetta che tutte le due parti dell'array siano ordinate prima di fare il merge altrimenti il merge non funziona
-    #pragma omp taskwait
-    mergeMPI(arr, left, mid, right, temp);
-}
-
-
 // ========= FAST FLOW =========
+// struct EmitterCreation : ff_node {
+//     int num_workers;
+//     EmitterCreation(int n) : num_workers(n) {}
+
+//     void* svc(void* task) override {
+//         // Manda un task a ciascun worker
+//         for(int i = 0; i < num_workers; ++i) {
+//             ff_send_out((void*)1); // task dummy
+//         }
+//         return nullptr; // fine emitter
+//     }
+// };
+
 
 struct workersFileCreation : ff_node {
     int record;
@@ -260,23 +171,13 @@ struct workersFileCreation : ff_node {
 
     void* svc(void* task) override {
         std::vector<Record*> createdRecord;
+
         for (int i = 0; i < record; i++) {
             Record* rec = createRandomRecord(8, payload_max);
-            if (!rec) {
-                std::cerr << "Errore: malloc fallito\n";
-                continue;
-            }
-            if (rec->len > payload_max) {
-                std::cerr << "Errore: payload fuori range (" << rec->len << ")\n";
-                free(rec);
-                continue;
-            }
-
             // Buffer temporaneo per header + payload
             auto* buffer = new std::vector<char>(sizeof(rec->key) + sizeof(rec->len) + rec->len);
 
             size_t offset = 0;
-
             // Copio la key
             std::memcpy(buffer->data() + offset, &rec->key, sizeof(rec->key));
             offset += sizeof(rec->key);
@@ -288,39 +189,49 @@ struct workersFileCreation : ff_node {
             // Copio il payload
             std::memcpy(buffer->data() + offset, rec->payload, rec->len);
             offset += rec->len;
-            // std::cout << "[Worker " << ff_node::get_my_id()
-            //           << "] generato record " << i
-            //           << " con payload " << rec->len << "\n";
-            free(rec);
-            // Invio tutto al collector per scrivere in maniera sequenziale sul file
-            // Passo il puntatore al buffer già creato nell'heap -> risparmio, NussunaCopia
+            // Invio il buffer al collector
             ff_send_out(buffer);
+            free(rec);
         }
-        return GO_ON; // worker non finisce, continua a elaborare altri task
+
+        return EOS;
     }
 };
 
 struct CreationCollector : ff_node {
     MPI_File mpi_file;
-    MPI_Offset offset = 0;   // Offset corrente nel file
-    MPI_Win win;             // (opzionale per gestione condivisa)
+    std::vector<char> big_buffer; // buffer cumulativo locale
 
     CreationCollector(MPI_File file) : mpi_file(file) {}
 
     void* svc(void* task) override {
+        // Ricevi un buffer parziale da un worker e lo accumuli
         auto* partial = (std::vector<char>*) task;
-
-        // Scrittura ordinata (MPI mantiene l’ordine fra processi)
-        MPI_Status status;
-        MPI_File_write_ordered(mpi_file, partial->data(), 
-                               partial->size(), MPI_CHAR, &status);
-
-        delete partial;
+        big_buffer.insert(big_buffer.end(), partial->begin(), partial->end());
+        delete partial; // liberiamo la memoria del buffer parziale
         return GO_ON;
     }
+
+    void svc_end() override {
+        // std::cout << "==== [Collector] Scrivo su file: " << big_buffer.size() 
+        //           << " byte ====\n";
+        // Alla fine, scriviamo tutto il buffer accumulato ordinatamente
+        MPI_Status status;
+        size_t remaining = big_buffer.size();
+        char* ptr = big_buffer.data();
+
+        // Se buffer > INT_MAX, spezza in chunk multipli
+        // Questo perchè MPI standard non permette di scrivere più di INT_MAX byte in una sola operazione
+        while (remaining > 0) {
+            int chunk = (remaining > std::numeric_limits<int>::max())
+                            ? std::numeric_limits<int>::max()
+                            : static_cast<int>(remaining);
+            MPI_File_write_ordered(mpi_file, ptr, chunk, MPI_CHAR, &status);
+            remaining -= chunk;
+            ptr += chunk;
+        }
+    }
 };
-
-
 
 // --- Emitter: divide l'array in blocchi di chunk_size ---
 struct EmitterSortParallel : ff_node {
@@ -441,12 +352,11 @@ int main(int argc, char *argv[]) {
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
     MPI_File fh;
-    MPI_File_open(MPI_COMM_WORLD, "records_mpi.bin", MPI_MODE_CREATE | MPI_MODE_WRONLY, MPI_INFO_NULL, &fh);
+    MPI_File_open(MPI_COMM_WORLD, "records_FF.bin", MPI_MODE_CREATE | MPI_MODE_WRONLY, MPI_INFO_NULL, &fh);
 
     // Posso dividere anche la scrittura del file in più processi
     // Dentro ognuno genero chunk_size record che scrivo nel file
     // La scrittura su file però va effettuata nel rank 0 sennò ho comportamenti indefiniti
-
     int base = array_size / size;
     int resto = array_size % size;
 
@@ -458,11 +368,17 @@ int main(int argc, char *argv[]) {
 
     ff_farm farmCreation;
 
+    int num_thread_records = n_records / num_threads;
+    int restoThread = n_records % num_threads;
+    // std::cout << "Numero di record per thread: " << num_thread_records << std::endl;
+    // std::cout << "Numero di record rimanenti: " << restoThread << std::endl;
     for (int i = 0; i < num_threads; ++i) {
         // Per gestire casi in cui array size non è divisibile
-        workerVectorCreation.push_back(new workersFileCreation(n_records, PAYLOAD_MAX));
+        workerVectorCreation.push_back(new workersFileCreation(num_thread_records + (i < restoThread ? 1 : 0), PAYLOAD_MAX));
     }
+    //EmitterCreation* emitterCreation = new EmitterCreation(num_threads);
     CreationCollector* collectorCreation = new CreationCollector(fh);
+    
     farmCreation.add_workers(workerVectorCreation);
     farmCreation.add_collector(collectorCreation);
     printf("-----------------\n");
@@ -475,12 +391,12 @@ int main(int argc, char *argv[]) {
     //TIMERSTOP(farmCreationParallel);
     MPI_File_close(&fh);
 
-    if(rank == 0) std::cout << "Scrittura completata!" << std::endl;
+    //if(rank == 0) std::cout << "Scrittura completata!" << std::endl;
 
     TIMERSTOP(saveRecordsToFile_MPI);
     // // CREARE VARIABILE DA AFFIDARE A PAYLOAD_MAX da linea di comando
     // // Generazione record casuali
-    // saveRecordsToFile("records.bin", array_size, PAYLOAD_MAX);
+    // saveRecordsToFile(" records_FF.bin", array_size, PAYLOAD_MAX);
     // TIMERSTOP(saveRecordsToFile);
 
     MPI_Datatype MPI_RecordHeader;
@@ -490,8 +406,9 @@ int main(int argc, char *argv[]) {
     int mpi_records_dim = 0;
     std::vector<Record*> records;
     if (rank == 0) {
-        records = loadRecordsFromFile("records.bin"); // solo root legge
+        records = loadRecordsFromFile("records_FF.bin"); // solo root legge
         mpi_records_dim = records.size();
+        //std::cout << "Dimensione totale dei record: " << mpi_records_dim << std::endl;
         // eventualmente crea all_headers qui
     }
 
@@ -529,9 +446,9 @@ int main(int argc, char *argv[]) {
         // ============================================
         int mpi_records_dim = recordsMPI_FF.size();
         //std::cout << "Dimensione totale dei record MPI: " << mpi_records_dim << std::endl;
-        std::cout << "===============================" << std::endl;
-        std::cout << "========= MPI+OpenMP ==========" << std::endl;
-        std::cout << "===============================" << std::endl;
+        // std::cout << "===============================" << std::endl;
+        // std::cout << "========= MPI+OpenMP ==========" << std::endl;
+        // std::cout << "===============================" << std::endl;
         // ------------------ CALCOLO CHUNK ------------------
         int my_chunk_size = sendcounts[0];  // rank 0 elabora chunk + resto
 

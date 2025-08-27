@@ -50,6 +50,12 @@
         "stack": "cpp",
         "variant": "cpp",
         "algorithm": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "__tree": "cpp",
+        "fstream": "cpp",
+        "future": "cpp",
+        "iomanip": "cpp",
+        "map": "cpp",
+        "set": "cpp"
     }
 }
