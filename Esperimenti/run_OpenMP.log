@@ -1,0 +1,253 @@
+nohup: ignoring input
+>>> SIZE=100000, PAYLOAD=128, THREADS=1
+File records.bin creato con 100000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.728954s
+# elapsed time (mergeSortSeq): 0.112153s
+# elapsed time (mergeSortPar): 4.27067s
+========MergeSort completato correttamente su 100000 record.==========
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=2
+File records.bin creato con 100000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.213621s
+# elapsed time (mergeSortSeq): 0.110679s
+# elapsed time (mergeSortPar): 0.0572341s
+========MergeSort completato correttamente su 100000 record.==========
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=4
+File records.bin creato con 100000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.085553s
+# elapsed time (mergeSortSeq): 0.0927394s
+# elapsed time (mergeSortPar): 0.0411489s
+========MergeSort completato correttamente su 100000 record.==========
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=8
+File records.bin creato con 100000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.0754325s
+# elapsed time (mergeSortSeq): 0.099413s
+# elapsed time (mergeSortPar): 0.0221268s
+========MergeSort completato correttamente su 100000 record.==========
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=1
+File records.bin creato con 100000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.20115s
+# elapsed time (mergeSortSeq): 0.112622s
+# elapsed time (mergeSortPar): 4.21112s
+========MergeSort completato correttamente su 100000 record.==========
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=2
+File records.bin creato con 100000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.232732s
+# elapsed time (mergeSortSeq): 0.113677s
+# elapsed time (mergeSortPar): 0.0593207s
+========MergeSort completato correttamente su 100000 record.==========
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=4
+File records.bin creato con 100000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.144617s
+# elapsed time (mergeSortSeq): 0.100693s
+# elapsed time (mergeSortPar): 0.0417561s
+========MergeSort completato correttamente su 100000 record.==========
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=8
+File records.bin creato con 100000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.121002s
+# elapsed time (mergeSortSeq): 0.0954187s
+# elapsed time (mergeSortPar): 0.0229882s
+========MergeSort completato correttamente su 100000 record.==========
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=1
+File records.bin creato con 100000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.371145s
+# elapsed time (mergeSortSeq): 0.114584s
+# elapsed time (mergeSortPar): 4.26477s
+========MergeSort completato correttamente su 100000 record.==========
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=2
+File records.bin creato con 100000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.362608s
+# elapsed time (mergeSortSeq): 0.117744s
+# elapsed time (mergeSortPar): 0.0626464s
+========MergeSort completato correttamente su 100000 record.==========
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=4
+File records.bin creato con 100000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.290182s
+# elapsed time (mergeSortSeq): 0.0946021s
+# elapsed time (mergeSortPar): 0.0419242s
+========MergeSort completato correttamente su 100000 record.==========
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=8
+File records.bin creato con 100000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.214706s
+# elapsed time (mergeSortSeq): 0.095362s
+# elapsed time (mergeSortPar): 0.0252712s
+========MergeSort completato correttamente su 100000 record.==========
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=1
+File records.bin creato con 1000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 1.05115s
+# elapsed time (mergeSortSeq): 1.1891s
+# elapsed time (mergeSortPar): 42.359s
+========MergeSort completato correttamente su 1000000 record.==========
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=2
+File records.bin creato con 1000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 6.51287s
+# elapsed time (mergeSortSeq): 1.16899s
+# elapsed time (mergeSortPar): 0.61994s
+========MergeSort completato correttamente su 1000000 record.==========
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=4
+File records.bin creato con 1000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.78111s
+# elapsed time (mergeSortSeq): 0.79613s
+# elapsed time (mergeSortPar): 0.433396s
+========MergeSort completato correttamente su 1000000 record.==========
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=8
+File records.bin creato con 1000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.704969s
+# elapsed time (mergeSortSeq): 0.798309s
+# elapsed time (mergeSortPar): 0.26911s
+========MergeSort completato correttamente su 1000000 record.==========
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=1
+File records.bin creato con 1000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 1.89481s
+# elapsed time (mergeSortSeq): 1.18568s
+# elapsed time (mergeSortPar): 42.6153s
+========MergeSort completato correttamente su 1000000 record.==========
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=2
+File records.bin creato con 1000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 1.93775s
+# elapsed time (mergeSortSeq): 1.18094s
+# elapsed time (mergeSortPar): 0.663175s
+========MergeSort completato correttamente su 1000000 record.==========
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=4
+File records.bin creato con 1000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 5.21253s
+# elapsed time (mergeSortSeq): 0.817507s
+# elapsed time (mergeSortPar): 0.457818s
+========MergeSort completato correttamente su 1000000 record.==========
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=8
+File records.bin creato con 1000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 3.46532s
+# elapsed time (mergeSortSeq): 0.839449s
+# elapsed time (mergeSortPar): 0.277455s
+========MergeSort completato correttamente su 1000000 record.==========
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=1
+File records.bin creato con 1000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 3.55215s
+# elapsed time (mergeSortSeq): 1.24845s
+# elapsed time (mergeSortPar): 42.5169s
+========MergeSort completato correttamente su 1000000 record.==========
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=2
+File records.bin creato con 1000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 10.1548s
+# elapsed time (mergeSortSeq): 1.23426s
+# elapsed time (mergeSortPar): 0.658617s
+========MergeSort completato correttamente su 1000000 record.==========
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=4
+File records.bin creato con 1000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 5.13505s
+# elapsed time (mergeSortSeq): 0.814702s
+# elapsed time (mergeSortPar): 0.414087s
+========MergeSort completato correttamente su 1000000 record.==========
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=8
+File records.bin creato con 1000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 2.58641s
+# elapsed time (mergeSortSeq): 0.833676s
+# elapsed time (mergeSortPar): 0.285599s
+========MergeSort completato correttamente su 1000000 record.==========
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=1
+File records.bin creato con 10000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 10.3829s
+# elapsed time (mergeSortSeq): 11.935s
+# elapsed time (mergeSortPar): 425.818s
+========MergeSort completato correttamente su 10000000 record.==========
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=2
+File records.bin creato con 10000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 12.4155s
+# elapsed time (mergeSortSeq): 11.9984s
+# elapsed time (mergeSortPar): 6.56483s
+========MergeSort completato correttamente su 10000000 record.==========
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=4
+File records.bin creato con 10000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 7.90834s
+# elapsed time (mergeSortSeq): 8.41871s
+# elapsed time (mergeSortPar): 4.3854s
+========MergeSort completato correttamente su 10000000 record.==========
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=8
+File records.bin creato con 10000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 8.48558s
+# elapsed time (mergeSortSeq): 8.18329s
+# elapsed time (mergeSortPar): 2.44325s
+========MergeSort completato correttamente su 10000000 record.==========
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=1
+File records.bin creato con 10000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 30.6783s
+# elapsed time (mergeSortSeq): 12.5225s
+# elapsed time (mergeSortPar): 431.819s
+========MergeSort completato correttamente su 10000000 record.==========
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=2
+File records.bin creato con 10000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 21.8976s
+# elapsed time (mergeSortSeq): 12.0211s
+# elapsed time (mergeSortPar): 6.77103s
+========MergeSort completato correttamente su 10000000 record.==========
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=4
+File records.bin creato con 10000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 24.0829s
+# elapsed time (mergeSortSeq): 8.6134s
+# elapsed time (mergeSortPar): 4.49853s
+========MergeSort completato correttamente su 10000000 record.==========
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=8
+File records.bin creato con 10000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 22.3953s
+# elapsed time (mergeSortSeq): 8.62021s
+# elapsed time (mergeSortPar): 2.81444s
+========MergeSort completato correttamente su 10000000 record.==========
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=1
+File records.bin creato con 10000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 41.4068s
+# elapsed time (mergeSortSeq): 12.5025s
+# elapsed time (mergeSortPar): 430.565s
+========MergeSort completato correttamente su 10000000 record.==========
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=2
+File records.bin creato con 10000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 43.0151s
+# elapsed time (mergeSortSeq): 12.5769s
+# elapsed time (mergeSortPar): 7.07093s
+========MergeSort completato correttamente su 10000000 record.==========
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=4
+File records.bin creato con 10000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 36.7504s
+# elapsed time (mergeSortSeq): 8.72798s
+# elapsed time (mergeSortPar): 4.7563s
+========MergeSort completato correttamente su 10000000 record.==========
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=8
+File records.bin creato con 10000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 22.8249s
+# elapsed time (mergeSortSeq): 8.88423s
+# elapsed time (mergeSortPar): 2.5939s
+========MergeSort completato correttamente su 10000000 record.==========
+

@@ -13,8 +13,6 @@
 #include "fastflow/ff/dc.hpp"
 
 #include "hpc_helpers.hpp"   
-
-// Direttive OpenOMP -> usare (-fopenmp) per compilare
 #include <omp.h>
 #include <mpi.h>
 
@@ -147,20 +145,6 @@ void printRecords(const std::vector<Record*>& records, size_t max_payload_bytes 
     }
 }
 
-// ========= FAST FLOW =========
-// struct EmitterCreation : ff_node {
-//     int num_workers;
-//     EmitterCreation(int n) : num_workers(n) {}
-
-//     void* svc(void* task) override {
-//         // Manda un task a ciascun worker
-//         for(int i = 0; i < num_workers; ++i) {
-//             ff_send_out((void*)1); // task dummy
-//         }
-//         return nullptr; // fine emitter
-//     }
-// };
-
 
 struct workersFileCreation : ff_node {
     int record;
@@ -213,8 +197,6 @@ struct CreationCollector : ff_node {
     }
 
     void svc_end() override {
-        // std::cout << "==== [Collector] Scrivo su file: " << big_buffer.size() 
-        //           << " byte ====\n";
         // Alla fine, scriviamo tutto il buffer accumulato ordinatamente
         MPI_Status status;
         size_t remaining = big_buffer.size();
@@ -244,13 +226,8 @@ struct EmitterSortParallel : ff_node {
     void* svc(void*) override {
         for (size_t i = 0; i < arr.size(); i += chunk_size) {
             // Per gestire anche il caso in cui l'array non sia divisibile per chunk_size
-            // end ha dimensione il minimo tra la posizione nell'array + chunk_size e la dimensione massima rimasta nell'array nel caso non sia divisibile
             size_t end = std::min(i + chunk_size, arr.size());
             // In questa riga creo il vettore di dimensione chunk_size
-            // Sommando i ottengo un iteratore all'elemento di indice i.
-            // arr.begin() restituisce un iteratore al primo elemento sommandoci i mi sposto tra tutti gli elementi fino a arr.size
-            // arr.begin() + end restituisce invece l'iteratore alla posizione successiva all'ultimo elemento del blocco
-            // In questo modo costruisco un nuovo vettore copiando gli elementi da indice i fino a end-1.
             auto* block = new std::vector<RecordHeader>(arr.begin() + i, arr.begin() + end);
             // Manda il blocco da ordinare ai worker
             ff_send_out(block);
@@ -354,9 +331,6 @@ int main(int argc, char *argv[]) {
     MPI_File fh;
     MPI_File_open(MPI_COMM_WORLD, "records_FF.bin", MPI_MODE_CREATE | MPI_MODE_WRONLY, MPI_INFO_NULL, &fh);
 
-    // Posso dividere anche la scrittura del file in più processi
-    // Dentro ognuno genero chunk_size record che scrivo nel file
-    // La scrittura su file però va effettuata nel rank 0 sennò ho comportamenti indefiniti
     int base = array_size / size;
     int resto = array_size % size;
 
@@ -370,8 +344,6 @@ int main(int argc, char *argv[]) {
 
     int num_thread_records = n_records / num_threads;
     int restoThread = n_records % num_threads;
-    // std::cout << "Numero di record per thread: " << num_thread_records << std::endl;
-    // std::cout << "Numero di record rimanenti: " << restoThread << std::endl;
     for (int i = 0; i < num_threads; ++i) {
         // Per gestire casi in cui array size non è divisibile
         workerVectorCreation.push_back(new workersFileCreation(num_thread_records + (i < restoThread ? 1 : 0), PAYLOAD_MAX));
@@ -391,13 +363,7 @@ int main(int argc, char *argv[]) {
     //TIMERSTOP(farmCreationParallel);
     MPI_File_close(&fh);
 
-    //if(rank == 0) std::cout << "Scrittura completata!" << std::endl;
-
     TIMERSTOP(saveRecordsToFile_MPI);
-    // // CREARE VARIABILE DA AFFIDARE A PAYLOAD_MAX da linea di comando
-    // // Generazione record casuali
-    // saveRecordsToFile(" records_FF.bin", array_size, PAYLOAD_MAX);
-    // TIMERSTOP(saveRecordsToFile);
 
     MPI_Datatype MPI_RecordHeader;
     MPI_Type_contiguous(sizeof(RecordHeader), MPI_BYTE, &MPI_RecordHeader);
@@ -408,8 +374,6 @@ int main(int argc, char *argv[]) {
     if (rank == 0) {
         records = loadRecordsFromFile("records_FF.bin"); // solo root legge
         mpi_records_dim = records.size();
-        //std::cout << "Dimensione totale dei record: " << mpi_records_dim << std::endl;
-        // eventualmente crea all_headers qui
     }
 
     // Tutti i rank ricevono la dimensione totale -> senza caricare il file
@@ -445,10 +409,7 @@ int main(int argc, char *argv[]) {
         // =============== MERGE MPI ==================
         // ============================================
         int mpi_records_dim = recordsMPI_FF.size();
-        //std::cout << "Dimensione totale dei record MPI: " << mpi_records_dim << std::endl;
-        // std::cout << "===============================" << std::endl;
-        // std::cout << "========= MPI+OpenMP ==========" << std::endl;
-        // std::cout << "===============================" << std::endl;
+
         // ------------------ CALCOLO CHUNK ------------------
         int my_chunk_size = sendcounts[0];  // rank 0 elabora chunk + resto
 
@@ -464,14 +425,14 @@ int main(int argc, char *argv[]) {
 
         std::vector<RecordHeader> local_headers(my_chunk_size);
         MPI_Scatterv(
-            all_headers.data(),             // root buffer
-            sendcounts.data(),              // numero elementi per rank
-            displs.data(),                  // offset per rank
-            MPI_RecordHeader,               // tipo dati
-            local_headers.data(),           // buffer locale
-            my_chunk_size,                  // numero elementi locali
-            MPI_RecordHeader,               // tipo dati
-            0,                              // root
+            all_headers.data(),
+            sendcounts.data(),
+            displs.data(),
+            MPI_RecordHeader,
+            local_headers.data(),
+            my_chunk_size,
+            MPI_RecordHeader,
+            0,
             MPI_COMM_WORLD
         );
 
@@ -492,7 +453,6 @@ int main(int argc, char *argv[]) {
             //std::cout << "============ DATI RICEVUTI ================ "<<" DATI: " << original_indices_Sorted.size()<<"\n";
         }
 
-        //TIMERSTART(Oridnamento_RANK_0)
         // Ordina chunk locale rank 0
         std::vector<RecordHeader> headers0(my_chunk_size);
         for(int i=0; i<my_chunk_size; i++)
@@ -521,8 +481,6 @@ int main(int argc, char *argv[]) {
 
         for(int i=0; i<my_chunk_size; i++)
             sorted_records[i] = recordsMPI_FF[result[i].original_index];
-        //TIMERSTOP(Oridnamento_RANK_0);
-
 
         // Poi aspetti che tutte le ricezioni siano completate
         MPI_Waitall(size - 1, requests.data(), MPI_STATUSES_IGNORE);
@@ -576,8 +534,6 @@ int main(int argc, char *argv[]) {
     }
 
     if (rank != 0) {
-        // int T_start = MPI_Wtime();
-        
         // Altri processi non principale
         // Devono ordinare i record dell'array di dimensione chunk_size
         // rank ricevente

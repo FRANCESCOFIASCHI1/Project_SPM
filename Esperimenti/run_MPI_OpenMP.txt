@@ -1,0 +1,793 @@
+>>> SIZE=100000, PAYLOAD=128, THREADS=2, NODES=2
+ TIME: (saveRecordsToFile_MPI): 0.168402s
+ TIME: (MPI_Send_Headers): 0.0945836s
+ TIME: (Oridnamento_RANK_0): 10.2369s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.237s
+ TIME: (Oridnamento_FINALE): 0.0374431s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=2, NODES=4
+ TIME: (saveRecordsToFile_MPI): 7.10976s
+ TIME: (MPI_Send_Headers): 0.0944587s
+ TIME: (Oridnamento_RANK_0): 10.1706s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.1707s
+ TIME: (Oridnamento_FINALE): 0.0372557s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=2, NODES=8
+ TIME: (saveRecordsToFile_MPI): 0.142834s
+ TIME: (MPI_Send_Headers): 0.0956629s
+ TIME: (Oridnamento_RANK_0): 10.144s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.144s
+ TIME: (Oridnamento_FINALE): 0.0375479s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=4, NODES=2
+ TIME: (saveRecordsToFile_MPI): 0.115063s
+ TIME: (MPI_Send_Headers): 0.0972058s
+ TIME: (Oridnamento_RANK_0): 10.753s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.7531s
+ TIME: (Oridnamento_FINALE): 0.0374825s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=4, NODES=4
+ TIME: (saveRecordsToFile_MPI): 0.346618s
+ TIME: (MPI_Send_Headers): 0.0951188s
+ TIME: (Oridnamento_RANK_0): 11.329s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 11.3291s
+ TIME: (Oridnamento_FINALE): 0.0374255s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=4, NODES=8
+ TIME: (saveRecordsToFile_MPI): 0.112998s
+ TIME: (MPI_Send_Headers): 0.0949432s
+ TIME: (Oridnamento_RANK_0): 12.3234s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 12.3235s
+ TIME: (Oridnamento_FINALE): 0.0376075s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=8, NODES=2
+ TIME: (saveRecordsToFile_MPI): 0.751766s 
+ TIME: (MPI_Send_Headers): 0.0975118s
+ TIME: (Oridnamento_RANK_0): 17.3428s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 17.3429s
+ TIME: (Oridnamento_FINALE): 0.0373189s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=8, NODES=4
+ TIME: (saveRecordsToFile_MPI): 0.0685271s
+ TIME: (MPI_Send_Headers): 0.0979736s
+ TIME: (Oridnamento_RANK_0): 19.3252s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 19.3253s
+ TIME: (Oridnamento_FINALE): 0.037454s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=8, NODES=8
+ TIME: (saveRecordsToFile_MPI): 0.542935s 
+ TIME: (MPI_Send_Headers): 0.0970529s
+ TIME: (Oridnamento_RANK_0): 18.3095s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 18.3095s
+ TIME: (Oridnamento_FINALE): 0.037376s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=2, NODES=2
+ TIME: (saveRecordsToFile_MPI): 0.247928s
+ 
+ TIME: (MPI_Send_Headers): 0.0941689s
+ TIME: (Oridnamento_RANK_0): 10.1725s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.1726s
+ TIME: (Oridnamento_FINALE): 0.0373721s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=2, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 0.310553s
+ 
+ TIME: (MPI_Send_Headers): 0.094359s
+ TIME: (Oridnamento_RANK_0): 10.2407s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.2408s
+ TIME: (Oridnamento_FINALE): 0.0374852s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=2, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 0.212823s
+ 
+ TIME: (MPI_Send_Headers): 0.0943584s
+ TIME: (Oridnamento_RANK_0): 10.0255s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.0255s
+ TIME: (Oridnamento_FINALE): 0.0374263s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=4, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 6.1556s
+ 
+ TIME: (MPI_Send_Headers): 0.0950034s
+ TIME: (Oridnamento_RANK_0): 10.6491s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.6492s
+ TIME: (Oridnamento_FINALE): 0.037311s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=4, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 6.73327s
+ 
+ TIME: (MPI_Send_Headers): 0.0945848s
+ TIME: (Oridnamento_RANK_0): 10.5937s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.5938s
+ TIME: (Oridnamento_FINALE): 0.0374775s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=4, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 0.185751s
+ 
+ TIME: (MPI_Send_Headers): 0.0948109s
+ TIME: (Oridnamento_RANK_0): 11.606s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 11.6061s
+ TIME: (Oridnamento_FINALE): 0.0375196s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=8, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 1.57915s
+ 
+ TIME: (MPI_Send_Headers): 0.0952569s
+ TIME: (Oridnamento_RANK_0): 17.0182s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 17.0183s
+ TIME: (Oridnamento_FINALE): 0.0372938s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=8, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 0.128577s
+ 
+ TIME: (MPI_Send_Headers): 0.0982877s
+ TIME: (Oridnamento_RANK_0): 17.5967s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 17.5967s
+ TIME: (Oridnamento_FINALE): 0.0374989s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=8, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 4.11909s
+ 
+ TIME: (MPI_Send_Headers): 0.0974909s
+ TIME: (Oridnamento_RANK_0): 18.449s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 18.4491s
+ TIME: (Oridnamento_FINALE): 0.0372757s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=2, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 0.423866s
+ 
+ TIME: (MPI_Send_Headers): 0.0948419s
+ TIME: (Oridnamento_RANK_0): 10.1611s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.1612s
+ TIME: (Oridnamento_FINALE): 0.0374263s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=2, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 2.91715s
+ 
+ TIME: (MPI_Send_Headers): 0.0944992s
+ TIME: (Oridnamento_RANK_0): 10.1072s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.1073s
+ TIME: (Oridnamento_FINALE): 0.0373138s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=2, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 0.436122s
+ 
+ TIME: (MPI_Send_Headers): 0.0943862s
+ TIME: (Oridnamento_RANK_0): 10.0734s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.0734s
+ TIME: (Oridnamento_FINALE): 0.0374008s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=4, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 0.321467s
+ 
+ TIME: (MPI_Send_Headers): 0.0945429s
+ TIME: (Oridnamento_RANK_0): 10.3418s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.3419s
+ TIME: (Oridnamento_FINALE): 0.0376457s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=4, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 0.276565s
+ 
+ TIME: (MPI_Send_Headers): 0.0946859s
+ TIME: (Oridnamento_RANK_0): 10.9457s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.9458s
+ TIME: (Oridnamento_FINALE): 0.0372928s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=4, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 4.27653s
+ 
+ TIME: (MPI_Send_Headers): 0.097356s
+ TIME: (Oridnamento_RANK_0): 10.6422s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.6423s
+ TIME: (Oridnamento_FINALE): 0.0374143s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=8, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 0.331099s
+ 
+ TIME: (MPI_Send_Headers): 0.0949418s
+ TIME: (Oridnamento_RANK_0): 19.0346s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 19.0346s
+ TIME: (Oridnamento_FINALE): 0.0375171s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=8, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 2.26272s
+ 
+ TIME: (MPI_Send_Headers): 0.0948422s
+ TIME: (Oridnamento_RANK_0): 15.7337s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 15.7338s
+ TIME: (Oridnamento_FINALE): 0.0377927s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=8, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 0.22601s
+ 
+ TIME: (MPI_Send_Headers): 0.0964527s
+ TIME: (Oridnamento_RANK_0): 19.1945s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 19.1946s
+ TIME: (Oridnamento_FINALE): 0.0377866s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=2, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 1.24173s
+ 
+ TIME: (MPI_Send_Headers): 0.0943373s
+ TIME: (Oridnamento_RANK_0): 9.96111s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 9.96115s
+ TIME: (Oridnamento_FINALE): 0.0374228s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=2, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 1.23622s
+ 
+ TIME: (MPI_Send_Headers): 0.093847s
+ TIME: (Oridnamento_RANK_0): 10.0201s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.0202s
+ TIME: (Oridnamento_FINALE): 0.0369463s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=2, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 5.09263s
+ 
+ TIME: (MPI_Send_Headers): 0.0937277s
+ TIME: (Oridnamento_RANK_0): 9.74849s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 9.74853s
+ TIME: (Oridnamento_FINALE): 0.0374756s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=4, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 1.68961s
+ 
+ TIME: (MPI_Send_Headers): 0.093981s
+ TIME: (Oridnamento_RANK_0): 11.4352s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 11.4353s
+ TIME: (Oridnamento_FINALE): 0.0373815s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=4, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 0.848489s
+ 
+ TIME: (MPI_Send_Headers): 0.0944787s
+ TIME: (Oridnamento_RANK_0): 10.5975s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.5976s
+ TIME: (Oridnamento_FINALE): 0.0375212s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=4, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 0.853539s
+ 
+ TIME: (MPI_Send_Headers): 0.0976659s
+ TIME: (Oridnamento_RANK_0): 11.1467s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 11.1468s
+ TIME: (Oridnamento_FINALE): 0.0374996s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=8, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 0.811467s
+ 
+ TIME: (MPI_Send_Headers): 0.0946525s
+ TIME: (Oridnamento_RANK_0): 16.6779s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 16.6779s
+ TIME: (Oridnamento_FINALE): 0.0374261s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=8, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 0.662653s
+ 
+ TIME: (MPI_Send_Headers): 0.0945713s
+ TIME: (Oridnamento_RANK_0): 17.8812s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 17.8812s
+ NO: (Oridnamento_FINALE): 0.0376635s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=8, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 0.659598s
+ 
+ TIME: (MPI_Send_Headers): 0.0944947s
+ TIME: (Oridnamento_RANK_0): 18.9382s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 18.9383s
+ TIME: (Oridnamento_FINALE): 0.038058s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=2, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 2.01232s
+ 
+ TIME: (MPI_Send_Headers): 0.0946028s
+ TIME: (Oridnamento_RANK_0): 10.2096s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.2097s
+ TIME: (Oridnamento_FINALE): 0.0373669s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=2, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 2.14011s
+ 
+ TIME: (MPI_Send_Headers): 0.0944225s
+ TIME: (Oridnamento_RANK_0): 10.0217s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.0217s
+ TIME: (Oridnamento_FINALE): 0.0373425s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=2, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 8.22072s
+ 
+ TIME: (MPI_Send_Headers): 0.094565s
+ TIME: (Oridnamento_RANK_0): 10.1916s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.1917s
+ TIME: (Oridnamento_FINALE): 0.0375851s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=4, NODES=2
+srun: job 322824 queued and waiting for resources
+srun: job 322824 has been allocated resources
+  
+ TIME: (saveRecordsToFile_MPI): 1.50637s
+ 
+ TIME: (MPI_Send_Headers): 0.0947478s
+ TIME: (Oridnamento_RANK_0): 10.9508s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.9509s
+ TIME: (Oridnamento_FINALE): 0.0375594s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=4, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 1.55146s
+ 
+ TIME: (MPI_Send_Headers): 0.094589s
+ TIME: (Oridnamento_RANK_0): 11.2049s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 11.205s
+ TIME: (Oridnamento_FINALE): 0.0375665s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=4, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 4.22155s
+ 
+ TIME: (MPI_Send_Headers): 0.09448s
+ TIME: (Oridnamento_RANK_0): 11.3014s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 11.3015s
+ TIME: (Oridnamento_FINALE): 0.0376771s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=8, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 1.38169s
+ 
+ TIME: (MPI_Send_Headers): 0.0945627s
+ TIME: (Oridnamento_RANK_0): 15.8139s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 15.814s
+ TIME: (Oridnamento_FINALE): 0.0374549s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=8, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 1.2408s
+ 
+ TIME: (MPI_Send_Headers): 0.0944134s
+ TIME: (Oridnamento_RANK_0): 16.079s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 16.079s
+ TIME: (Oridnamento_FINALE): 0.0376519s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=8, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 1.2525s
+ 
+ TIME: (MPI_Send_Headers): 0.0945587s
+ TIME: (Oridnamento_RANK_0): 18.5674s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 18.5675s
+ TIME: (Oridnamento_FINALE): 0.0379193s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=2, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 7.16541s
+ 
+ TIME: (MPI_Send_Headers): 0.0950167s
+ TIME: (Oridnamento_RANK_0): 9.85008s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 9.85012s
+ TIME: (Oridnamento_FINALE): 0.037676s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=2, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 3.9381s
+ 
+ TIME: (MPI_Send_Headers): 0.0946541s
+ TIME: (Oridnamento_RANK_0): 10.2291s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.2291s
+ TIME: (Oridnamento_FINALE): 0.0372546s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=2, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 8.79624s
+ 
+ TIME: (MPI_Send_Headers): 0.0948328s
+ TIME: (Oridnamento_RANK_0): 10.0655s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.0655s
+ TIME: (Oridnamento_FINALE): 0.0372974s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=4, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 3.7974s
+ 
+ TIME: (MPI_Send_Headers): 0.094617s
+ TIME: (Oridnamento_RANK_0): 11.6989s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 11.6989s
+ TIME: (Oridnamento_FINALE): 0.037316s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=4, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 9.76671s
+ 
+ TIME: (MPI_Send_Headers): 0.0953431s
+ TIME: (Oridnamento_RANK_0): 10.9172s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.9172s
+ TIME: (Oridnamento_FINALE): 0.0375383s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=4, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 3.04251s
+ 
+ TIME: (MPI_Send_Headers): 0.0943016s
+ TIME: (Oridnamento_RANK_0): 10.7127s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.7127s
+ TIME: (Oridnamento_FINALE): 0.0376092s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=8, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 2.3251s
+ 
+ TIME: (MPI_Send_Headers): 0.0951015s
+ TIME: (Oridnamento_RANK_0): 18.3664s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 18.3664s
+ TIME: (Oridnamento_FINALE): 0.0378598s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=8, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 2.45018s
+ 
+ TIME: (MPI_Send_Headers): 0.0941578s
+ TIME: (Oridnamento_RANK_0): 17.2153s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 17.2154s
+ TIME: (Oridnamento_FINALE): 0.0378394s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=8, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 4.42265s
+ 
+ TIME: (MPI_Send_Headers): 0.0947472s
+ TIME: (Oridnamento_RANK_0): 16.106s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 16.1061s
+ TIME: (Oridnamento_FINALE): 0.0375751s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=2, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 17.3008s
+ 
+ TIME: (MPI_Send_Headers): 0.0943949s
+ TIME: (Oridnamento_RANK_0): 10.1056s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.1057s
+ TIME: (Oridnamento_FINALE): 0.0373248s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=2, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 17.7886s
+ 
+ TIME: (MPI_Send_Headers): 0.0943144s
+ TIME: (Oridnamento_RANK_0): 10.0096s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.0096s
+ TIME: (Oridnamento_FINALE): 0.0371649s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=2, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 11.0231s
+ 
+ TIME: (MPI_Send_Headers): 0.0936022s
+ TIME: (Oridnamento_RANK_0): 9.91932s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 9.91936s
+ TIME: (Oridnamento_FINALE): 0.0369882s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=4, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 8.19691s
+ 
+ TIME: (MPI_Send_Headers): 0.0951774s
+ TIME: (Oridnamento_RANK_0): 11.7368s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 11.7368s
+ TIME: (Oridnamento_FINALE): 0.0375486s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=4, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 8.3504s
+ 
+ TIME: (MPI_Send_Headers): 0.0946263s
+ TIME: (Oridnamento_RANK_0): 10.9794s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.9795s
+ TIME: (Oridnamento_FINALE): 0.0373411s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=4, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 11.9258s
+ 
+ TIME: (MPI_Send_Headers): 0.095217s
+ TIME: (Oridnamento_RANK_0): 11.8002s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 11.8003s
+ TIME: (Oridnamento_FINALE): 0.0374689s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=8, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 11.0051s
+ 
+ TIME: (MPI_Send_Headers): 0.0951291s
+ TIME: (Oridnamento_RANK_0): 19.0877s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 19.0878s
+ TIME: (Oridnamento_FINALE): 0.037499s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=8, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 7.0072s
+ 
+ TIME: (MPI_Send_Headers): 0.0947856s
+ TIME: (Oridnamento_RANK_0): 18.5176s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 18.5177s
+ TIME: (Oridnamento_FINALE): 0.0374753s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=8, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 14.8431s
+ 
+ TIME: (MPI_Send_Headers): 0.0947144s
+ TIME: (Oridnamento_RANK_0): 16.0906s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 16.0907s
+ TIME: (Oridnamento_FINALE): 0.0373133s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=2, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 25.0708s
+ 
+ TIME: (MPI_Send_Headers): 0.094764s
+ TIME: (Oridnamento_RANK_0): 10.1516s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.1516s
+ TIME: (Oridnamento_FINALE): 0.0374549s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=2, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 19.9711s
+ 
+ TIME: (MPI_Send_Headers): 0.0947351s
+ TIME: (Oridnamento_RANK_0): 10.0405s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.0405s
+ TIME: (Oridnamento_FINALE): 0.0373426s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=2, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 26.6434s
+ 
+ TIME: (MPI_Send_Headers): 0.0945846s
+ TIME: (Oridnamento_RANK_0): 9.86098s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 9.86102s
+ TIME: (Oridnamento_FINALE): 0.0373799s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=4, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 27.5851s
+ 
+ TIME: (MPI_Send_Headers): 0.0944857s
+ TIME: (Oridnamento_RANK_0): 10.4572s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.4572s
+ TIME: (Oridnamento_FINALE): 0.0373319s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=4, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 18.2825s
+ 
+ TIME: (MPI_Send_Headers): 0.0947904s
+ TIME: (Oridnamento_RANK_0): 10.8765s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.8766s
+ TIME: (Oridnamento_FINALE): 0.0373789s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=4, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 16.3245s
+ 
+ TIME: (MPI_Send_Headers): 0.0947016s
+ TIME: (Oridnamento_RANK_0): 11.7389s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 11.739s
+ TIME: (Oridnamento_FINALE): 0.037351s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=8, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 12.5044s
+ 
+ TIME: (MPI_Send_Headers): 0.0947201s
+ TIME: (Oridnamento_RANK_0): 18.7105s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 18.7106s
+ TIME: (Oridnamento_FINALE): 0.0373909s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=8, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 11.8966s
+ 
+ TIME: (MPI_Send_Headers): 0.0945971s
+ TIME: (Oridnamento_RANK_0): 15.8756s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 15.8757s
+ TIME: (Oridnamento_FINALE): 0.0377927s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=8, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 19.2521s
+ 
+ TIME: (MPI_Send_Headers): 0.095088s
+ TIME: (Oridnamento_RANK_0): 16.2944s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 16.2944s
+ TIME: (Oridnamento_FINALE): 0.0373304s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=2, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 22.1012s
+ 
+ TIME: (MPI_Send_Headers): 0.0943196s
+ TIME: (Oridnamento_RANK_0): 10.0771s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.0771s
+ TIME: (Oridnamento_FINALE): 0.0373818s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=2, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 23.0463s
+ 
+ TIME: (MPI_Send_Headers): 0.0949492s
+ TIME: (Oridnamento_RANK_0): 10.0909s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.091s
+ TIME: (Oridnamento_FINALE): 0.0372322s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=2, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 21.8432s
+ 
+ TIME: (MPI_Send_Headers): 0.0945876s
+ TIME: (Oridnamento_RANK_0): 10.1358s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 10.1358s
+ TIME: (Oridnamento_FINALE): 0.0373066s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=4, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 17.2496s
+ 
+ TIME: (MPI_Send_Headers): 0.0991157s
+ TIME: (Oridnamento_RANK_0): 11.0988s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 11.0988s
+ TIME: (Oridnamento_FINALE): 0.0374834s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=4, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 16.1325s
+ 
+ TIME: (MPI_Send_Headers): 0.0945866s
+ TIME: (Oridnamento_RANK_0): 12.3378s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 12.3379s
+ TIME: (Oridnamento_FINALE): 0.0372742s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=4, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 12.2159s
+ 
+ TIME: (MPI_Send_Headers): 0.0957852s
+ TIME: (Oridnamento_RANK_0): 11.379s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 11.3791s
+ TIME: (Oridnamento_FINALE): 0.0374527s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=8, NODES=2
+  
+ TIME: (saveRecordsToFile_MPI): 6.79328s
+ 
+ TIME: (MPI_Send_Headers): 0.0981595s
+ TIME: (Oridnamento_RANK_0): 17.8732s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 17.8733s
+ TIME: (Oridnamento_FINALE): 0.0373284s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=8, NODES=4
+  
+ TIME: (saveRecordsToFile_MPI): 6.78861s
+ 
+ TIME: (MPI_Send_Headers): 0.0958154s
+ TIME: (Oridnamento_RANK_0): 17.3279s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 17.3279s
+ TIME: (Oridnamento_FINALE): 0.037359s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=8, NODES=8
+  
+ TIME: (saveRecordsToFile_MPI): 6.8531s
+ 
+ TIME: (MPI_Send_Headers): 0.0946851s
+ TIME: (Oridnamento_RANK_0): 18.3002s
+ TIME: (MPI_Recv_OriginalIndex_eOrdinamento): 18.3002s
+ TIME: (Oridnamento_FINALE): 0.0374016s
+====== ORDINAMENTO MPI+OpenMP OK! ======
+

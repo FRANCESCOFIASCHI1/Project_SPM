@@ -1,0 +1,55 @@
+nohup: ignoring input
+>>> SIZE=100000, PAYLOAD=128
+File records.bin creato con 100000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.298095s
+# elapsed time (standardSortRecord): 0.00970508s
+========StandardSort completato correttamente su 100000 record.==========
+
+>>> SIZE=100000, PAYLOAD=256
+File records.bin creato con 100000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.217894s
+# elapsed time (standardSortRecord): 0.0115801s
+========StandardSort completato correttamente su 100000 record.==========
+
+>>> SIZE=100000, PAYLOAD=512
+File records.bin creato con 100000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.170371s
+# elapsed time (standardSortRecord): 0.013543s
+========StandardSort completato correttamente su 100000 record.==========
+
+>>> SIZE=1M, PAYLOAD=128
+File records.bin creato con 1000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.541613s
+# elapsed time (standardSortRecord): 0.169903s
+========StandardSort completato correttamente su 1000000 record.==========
+
+>>> SIZE=1M, PAYLOAD=256
+File records.bin creato con 1000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 0.932432s
+# elapsed time (standardSortRecord): 0.19493s
+========StandardSort completato correttamente su 1000000 record.==========
+
+>>> SIZE=1M, PAYLOAD=512
+File records.bin creato con 1000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 2.00834s
+# elapsed time (standardSortRecord): 0.283027s
+========StandardSort completato correttamente su 1000000 record.==========
+
+>>> SIZE=10M, PAYLOAD=128
+File records.bin creato con 10000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 11.0492s
+# elapsed time (standardSortRecord): 2.69998s
+========StandardSort completato correttamente su 10000000 record.==========
+
+>>> SIZE=10M, PAYLOAD=256
+File records.bin creato con 10000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 13.8527s
+# elapsed time (standardSortRecord): 3.1061s
+========StandardSort completato correttamente su 10000000 record.==========
+
+>>> SIZE=10M, PAYLOAD=512
+File records.bin creato con 10000000 record in parallelo.
+# elapsed time (saveRecordsToFile): 16.977s
+# elapsed time (standardSortRecord): 3.86516s
+========StandardSort completato correttamente su 10000000 record.==========
+

@@ -1,0 +1,1691 @@
+nohup: ignoring input
+>>> SIZE=100000, PAYLOAD=128, THREADS=2, NODES=2
+srun: job 327758 queued and waiting for resources
+srun: job 327758 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.111769s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.111602s
+# elapsed time (MPI_Send_Headers): 0.000786916s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00585715s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0054306s
+# elapsed time (Oridnamento_FINALE): 0.00145209s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=4, NODES=2
+srun: job 327759 queued and waiting for resources
+srun: job 327759 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 30.1665s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 30.1663s
+# elapsed time (MPI_Send_Headers): 0.000795547s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0065502s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00611456s
+# elapsed time (Oridnamento_FINALE): 0.00160025s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=8, NODES=2
+srun: job 327760 queued and waiting for resources
+srun: job 327760 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 30.4922s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 30.4926s
+# elapsed time (MPI_Send_Headers): 0.000807424s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0069661s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00666422s
+# elapsed time (Oridnamento_FINALE): 0.00179263s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=2, NODES=4
+srun: job 327761 queued and waiting for resources
+srun: job 327761 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.585336s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.585166s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.585157s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.585131s
+# elapsed time (MPI_Send_Headers): 0.000683417s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00440123s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00431711s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00538495s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00502436s
+# elapsed time (Oridnamento_FINALE): 0.00248481s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=4, NODES=4
+srun: job 327762 queued and waiting for resources
+srun: job 327762 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.55185s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.551694s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.551703s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.551714s
+# elapsed time (MPI_Send_Headers): 0.000674481s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00591922s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00573189s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00596475s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00542699s
+# elapsed time (Oridnamento_FINALE): 0.00257575s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=8, NODES=4
+srun: job 327763 queued and waiting for resources
+srun: job 327763 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.565113s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.564946s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.564927s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.564928s
+# elapsed time (MPI_Send_Headers): 0.000653268s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00603323s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00599059s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0059222s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00536251s
+# elapsed time (Oridnamento_FINALE): 0.00285735s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=2, NODES=8
+srun: job 327764 queued and waiting for resources
+srun: job 327764 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.883587s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.883584s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.883587s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.883591s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.883587s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.883604s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.883749s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.883585s
+# elapsed time (MPI_Send_Headers): 0.000640515s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00434741s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00429773s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00424525s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0043842s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0043397s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00505968s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00544878s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00482982s
+# elapsed time (Oridnamento_FINALE): 0.00330261s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=4, NODES=8
+srun: job 327765 queued and waiting for resources
+srun: job 327765 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.81668s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.816866s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.816703s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.816687s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.81669s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.816687s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.816705s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.816687s
+# elapsed time (MPI_Send_Headers): 0.000679202s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00608286s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00596424s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00592314s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00630251s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00605113s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00645579s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00643476s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00590124s
+# elapsed time (Oridnamento_FINALE): 0.00365598s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=8, NODES=8
+srun: job 327766 queued and waiting for resources
+srun: job 327766 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.572957s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.572842s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.57284s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.572831s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.572841s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.572842s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.572838s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.573002s
+# elapsed time (MPI_Send_Headers): 0.00177963s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00167142s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00268267s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00334947s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00315068s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00491524s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00486919s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0048173s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00310079s
+# elapsed time (Oridnamento_FINALE): 0.00363603s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=2, NODES=2
+srun: job 327767 queued and waiting for resources
+srun: job 327767 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 30.5735s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 30.574s
+# elapsed time (MPI_Send_Headers): 0.000812371s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00629129s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00587868s
+# elapsed time (Oridnamento_FINALE): 0.00154774s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=4, NODES=2
+srun: job 327768 queued and waiting for resources
+srun: job 327768 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 30.4259s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 30.4258s
+# elapsed time (MPI_Send_Headers): 0.000797442s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00631181s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00587051s
+# elapsed time (Oridnamento_FINALE): 0.00149689s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=8, NODES=2
+srun: job 327769 queued and waiting for resources
+srun: job 327769 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.17178s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.171647s
+# elapsed time (MPI_Send_Headers): 0.000795347s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0161647s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.015828s
+# elapsed time (Oridnamento_FINALE): 0.00152903s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=2, NODES=4
+srun: job 327770 queued and waiting for resources
+srun: job 327770 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.916765s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.916597s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.916565s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.916601s
+# elapsed time (MPI_Send_Headers): 0.000690655s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00307097s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00414537s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00543739s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00493243s
+# elapsed time (Oridnamento_FINALE): 0.00253491s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=4, NODES=4
+srun: job 327771 queued and waiting for resources
+srun: job 327771 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.903098s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.902966s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.902936s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.902966s
+# elapsed time (MPI_Send_Headers): 0.000641042s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00434632s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00425881s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00546855s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0050711s
+# elapsed time (Oridnamento_FINALE): 0.00274897s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=8, NODES=4
+srun: job 327772 queued and waiting for resources
+srun: job 327772 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.02996s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.02999s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.02996s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.03019s
+# elapsed time (MPI_Send_Headers): 0.000670929s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00619609s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.006153s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00602373s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00545409s
+# elapsed time (Oridnamento_FINALE): 0.00278601s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=2, NODES=8
+srun: job 327773 queued and waiting for resources
+srun: job 327773 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.208s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.208s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.208s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.20815s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.20801s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.208s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.208s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.20802s
+# elapsed time (MPI_Send_Headers): 0.000626879s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00453398s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00447105s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00443857s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0043818s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00428167s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00480108s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00531539s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0049538s
+# elapsed time (Oridnamento_FINALE): 0.00343779s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=4, NODES=8
+srun: job 327774 queued and waiting for resources
+srun: job 327774 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.16824s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.16824s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.16824s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.16825s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.16823s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.16836s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.16826s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.16824s
+# elapsed time (MPI_Send_Headers): 0.000668754s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0065545s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00650755s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00644633s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00641654s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00629866s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00627027s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00673119s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00594943s
+# elapsed time (Oridnamento_FINALE): 0.00358402s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=8, NODES=8
+srun: job 327775 queued and waiting for resources
+srun: job 327775 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.790964s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.790974s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.790964s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.791129s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.790952s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.790954s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.791088s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.790955s
+# elapsed time (MPI_Send_Headers): 0.00187182s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00120926s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00308197s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0028579s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00238775s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00563265s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00558356s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00552831s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00364915s
+# elapsed time (Oridnamento_FINALE): 0.00362613s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=2, NODES=2
+srun: job 327776 queued and waiting for resources
+srun: job 327776 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 30.3207s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 30.3205s
+# elapsed time (MPI_Send_Headers): 0.000811361s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00623528s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0058189s
+# elapsed time (Oridnamento_FINALE): 0.00163489s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=4, NODES=2
+srun: job 327777 queued and waiting for resources
+srun: job 327777 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 30.4105s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 30.4106s
+# elapsed time (MPI_Send_Headers): 0.000805734s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00645076s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00593985s
+# elapsed time (Oridnamento_FINALE): 0.00156245s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=8, NODES=2
+srun: job 327778 queued and waiting for resources
+srun: job 327778 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.268867s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.268686s
+# elapsed time (MPI_Send_Headers): 0.000803543s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00641742s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00592874s
+# elapsed time (Oridnamento_FINALE): 0.00167835s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=2, NODES=4
+srun: job 327779 queued and waiting for resources
+srun: job 327779 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.27408s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.27438s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.27408s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.27404s
+# elapsed time (MPI_Send_Headers): 0.000652764s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00360253s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00477504s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00590423s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00551736s
+# elapsed time (Oridnamento_FINALE): 0.00255967s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=4, NODES=4
+srun: job 327780 queued and waiting for resources
+srun: job 327780 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.32233s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.32237s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.32233s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.32247s
+# elapsed time (MPI_Send_Headers): 0.000664129s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00563188s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00553859s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00611061s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00562125s
+# elapsed time (Oridnamento_FINALE): 0.00272181s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=8, NODES=4
+srun: job 327781 queued and waiting for resources
+srun: job 327781 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.44189s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.44185s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.44198s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.44206s
+# elapsed time (MPI_Send_Headers): 0.000684647s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0421293s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0422378s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.042138s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0416578s
+# elapsed time (Oridnamento_FINALE): 0.00277003s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=2, NODES=8
+srun: job 327782 queued and waiting for resources
+srun: job 327782 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.48903s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.48885s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.48885s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.48886s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.48885s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.48885s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.48885s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.48887s
+# elapsed time (MPI_Send_Headers): 0.000664729s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00416858s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00412177s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00410004s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00433782s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00475597s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00508222s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00575134s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00507995s
+# elapsed time (Oridnamento_FINALE): 0.00340049s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=4, NODES=8
+srun: job 327783 queued and waiting for resources
+srun: job 327783 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.46695s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.4668s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.4668s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.46682s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.46681s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.46679s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.4668s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.46679s
+# elapsed time (MPI_Send_Headers): 0.000675758s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00616494s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00611683s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00605772s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00594136s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00588291s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00611837s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00661286s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.00583427s
+# elapsed time (Oridnamento_FINALE): 0.0035301s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=8, NODES=8
+srun: job 327784 queued and waiting for resources
+srun: job 327784 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.16648s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.1666s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.16648s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.16649s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.1667s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.16649s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.1665s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.16649s
+# elapsed time (MPI_Send_Headers): 0.00183928s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00253133s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00242931s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0020877s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00426503s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00420907s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.00413962s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0264297s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0263862s
+# elapsed time (Oridnamento_FINALE): 0.00344763s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=2, NODES=2
+srun: job 327785 queued and waiting for resources
+srun: job 327785 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 31.2235s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 31.2236s
+# elapsed time (MPI_Send_Headers): 0.00649573s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0707562s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0737579s
+# elapsed time (Oridnamento_FINALE): 0.018793s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=4, NODES=2
+srun: job 327786 queued and waiting for resources
+srun: job 327786 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 30.7996s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 30.7994s
+# elapsed time (MPI_Send_Headers): 0.0068238s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0698207s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0718366s
+# elapsed time (Oridnamento_FINALE): 0.019243s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=8, NODES=2
+srun: job 327787 queued and waiting for resources
+srun: job 327787 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.807308s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 0.807128s
+# elapsed time (MPI_Send_Headers): 0.00693129s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0788221s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0808818s
+# elapsed time (Oridnamento_FINALE): 0.0188399s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=2, NODES=4
+srun: job 327788 queued and waiting for resources
+srun: job 327788 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 7.28937s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 7.28937s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 7.28935s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 7.28957s
+# elapsed time (MPI_Send_Headers): 0.00598496s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0621525s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0614262s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.060597s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0665905s
+# elapsed time (Oridnamento_FINALE): 0.038457s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=4, NODES=4
+srun: job 327789 queued and waiting for resources
+srun: job 327789 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 7.23237s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 7.23238s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 7.23235s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 7.23251s
+# elapsed time (MPI_Send_Headers): 0.00599632s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0684876s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0663965s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0698973s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0712427s
+# elapsed time (Oridnamento_FINALE): 0.0374149s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=8, NODES=4
+srun: job 327790 queued and waiting for resources
+srun: job 327790 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 7.13385s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 7.13362s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 7.13367s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 7.1353s
+# elapsed time (MPI_Send_Headers): 0.00621923s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0906417s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0945114s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0946517s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0991899s
+# elapsed time (Oridnamento_FINALE): 0.0381311s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=2, NODES=8
+srun: job 327791 queued and waiting for resources
+srun: job 327791 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 11.6956s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 11.6956s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 11.6956s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 11.6957s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 11.6957s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 11.6957s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 11.6957s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 11.6958s
+# elapsed time (MPI_Send_Headers): 0.00535002s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0390154s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.045202s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0495784s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0538283s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0525231s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0580605s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0588793s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0631702s
+# elapsed time (Oridnamento_FINALE): 0.0679719s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=4, NODES=8
+srun: job 327792 queued and waiting for resources
+srun: job 327792 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 11.4425s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 11.4426s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 11.4425s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 11.4426s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 11.4425s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 11.4426s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 11.4427s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 11.4425s
+# elapsed time (MPI_Send_Headers): 0.0106487s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0425688s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0422524s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0425617s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0492433s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0537462s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0480422s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0567745s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0501872s
+# elapsed time (Oridnamento_FINALE): 0.0675786s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=8, NODES=8
+srun: job 327793 queued and waiting for resources
+srun: job 327793 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 4.09397s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 4.09403s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 4.09408s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 4.09395s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 4.09397s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 4.0942s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 4.09398s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 4.09409s
+# elapsed time (MPI_Send_Headers): 0.0663628s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.163791s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.178308s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.175128s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.185658s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.145191s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.165692s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.176875s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.195087s
+# elapsed time (Oridnamento_FINALE): 0.414865s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=2, NODES=2
+srun: job 327794 queued and waiting for resources
+srun: job 327794 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 31.405s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 31.4051s
+# elapsed time (MPI_Send_Headers): 0.00679312s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.07103s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0740066s
+# elapsed time (Oridnamento_FINALE): 0.0184563s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=4, NODES=2
+srun: job 327795 queued and waiting for resources
+srun: job 327795 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 31.1413s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 31.1414s
+# elapsed time (MPI_Send_Headers): 0.00658115s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0701562s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0729461s
+# elapsed time (Oridnamento_FINALE): 0.0184253s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=8, NODES=2
+srun: job 327796 queued and waiting for resources
+srun: job 327796 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.31271s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 1.31255s
+# elapsed time (MPI_Send_Headers): 0.00647101s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0752824s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0763885s
+# elapsed time (Oridnamento_FINALE): 0.0191603s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=2, NODES=4
+srun: job 327797 queued and waiting for resources
+srun: job 327797 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 14.6712s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 14.6713s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 14.6712s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 14.6712s
+# elapsed time (MPI_Send_Headers): 0.00590921s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0612731s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0651128s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0638411s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0698836s
+# elapsed time (Oridnamento_FINALE): 0.0378964s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=4, NODES=4
+srun: job 327798 queued and waiting for resources
+srun: job 327798 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 14.3337s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 14.3339s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 14.3337s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 14.3337s
+# elapsed time (MPI_Send_Headers): 0.00665296s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0656596s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0645411s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0658638s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0706052s
+# elapsed time (Oridnamento_FINALE): 0.0388609s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=8, NODES=4
+srun: job 327799 queued and waiting for resources
+srun: job 327799 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 14.8076s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 14.8076s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 14.8078s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 14.8076s
+# elapsed time (MPI_Send_Headers): 0.0122518s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0810502s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.073862s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.082653s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0801569s
+# elapsed time (Oridnamento_FINALE): 0.037491s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=2, NODES=8
+srun: job 327800 queued and waiting for resources
+srun: job 327800 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 24.324s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 24.3241s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 24.324s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 24.3243s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 24.3241s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 24.3241s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 24.3241s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 24.324s
+# elapsed time (MPI_Send_Headers): 0.00543232s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0480851s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0471268s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0498035s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0551694s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0535925s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0544493s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0565976s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0620239s
+# elapsed time (Oridnamento_FINALE): 0.0681251s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=4, NODES=8
+srun: job 327801 queued and waiting for resources
+srun: job 327801 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 22.8191s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 22.8191s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 22.8193s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 22.8191s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 22.8191s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 22.8191s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 22.8191s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 22.8191s
+# elapsed time (MPI_Send_Headers): 0.00754349s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0539557s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0535028s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0504906s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.049955s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0494761s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0556591s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0549782s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0588885s
+# elapsed time (Oridnamento_FINALE): 0.0682096s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=8, NODES=8
+srun: job 327802 queued and waiting for resources
+srun: job 327802 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 8.64193s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 8.64199s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 8.64193s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 8.64195s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 8.64202s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 8.64201s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 8.64195s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 8.64215s
+# elapsed time (MPI_Send_Headers): 0.0106854s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.052719s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0521223s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0496013s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0476655s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0436489s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0457024s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0553307s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0481459s
+# elapsed time (Oridnamento_FINALE): 0.0682194s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=2, NODES=2
+srun: job 327803 queued and waiting for resources
+srun: job 327803 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 32.5829s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 32.5831s
+# elapsed time (MPI_Send_Headers): 0.00667787s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0713012s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0745671s
+# elapsed time (Oridnamento_FINALE): 0.0187082s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=4, NODES=2
+srun: job 327804 queued and waiting for resources
+srun: job 327804 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 32.0714s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 32.0714s
+# elapsed time (MPI_Send_Headers): 0.00681454s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0691946s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0720769s
+# elapsed time (Oridnamento_FINALE): 0.01884s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=8, NODES=2
+srun: job 327805 queued and waiting for resources
+srun: job 327805 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.41622s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 2.41603s
+# elapsed time (MPI_Send_Headers): 0.00660309s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0764644s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0786616s
+# elapsed time (Oridnamento_FINALE): 0.0190442s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=2, NODES=4
+srun: job 327806 queued and waiting for resources
+srun: job 327806 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 29.8481s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 29.8482s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 29.8481s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 29.8483s
+# elapsed time (MPI_Send_Headers): 0.00599529s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0615868s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0651319s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0631886s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0652047s
+# elapsed time (Oridnamento_FINALE): 0.0384538s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=4, NODES=4
+srun: job 327807 queued and waiting for resources
+srun: job 327807 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 28.9416s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 28.9419s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 28.9417s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 28.9416s
+# elapsed time (MPI_Send_Headers): 0.00810556s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0656563s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0618053s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0654183s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0681997s
+# elapsed time (Oridnamento_FINALE): 0.0377249s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=8, NODES=4
+srun: job 327808 queued and waiting for resources
+srun: job 327808 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 32.5942s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 32.594s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 32.594s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 32.594s
+# elapsed time (MPI_Send_Headers): 0.00621762s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0881803s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0874527s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0863005s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0914263s
+# elapsed time (Oridnamento_FINALE): 0.0378275s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=2, NODES=8
+srun: job 327809 queued and waiting for resources
+srun: job 327809 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 52.0231s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 52.0232s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 52.0231s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 52.0231s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 52.0231s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 52.0231s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 52.0231s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 52.0233s
+# elapsed time (MPI_Send_Headers): 0.00531151s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0559051s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0549425s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0539886s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0535425s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0568684s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.055559s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0579826s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0629059s
+# elapsed time (Oridnamento_FINALE): 0.0686764s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=4, NODES=8
+srun: job 327810 queued and waiting for resources
+srun: job 327810 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 51.066s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 51.0662s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 51.066s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 51.066s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 51.066s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 51.066s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 51.066s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 51.066s
+# elapsed time (MPI_Send_Headers): 0.005528s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0546298s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0541453s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0526373s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.053303s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0546519s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0585894s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0616867s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0651055s
+# elapsed time (Oridnamento_FINALE): 0.0669066s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=8, NODES=8
+srun: job 327811 queued and waiting for resources
+srun: job 327811 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 16.5736s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 16.5736s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 16.5736s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 16.5736s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 16.5737s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 16.5736s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 16.5736s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 16.5738s
+# elapsed time (MPI_Send_Headers): 0.0221694s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0409762s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0480281s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0498311s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0376028s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0461746s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.0458532s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.040279s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.0396925s
+# elapsed time (Oridnamento_FINALE): 0.0683819s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=2, NODES=2
+srun: job 327812 queued and waiting for resources
+srun: job 327812 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 47.1551s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 47.155s
+# elapsed time (MPI_Send_Headers): 0.0668926s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.727635s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.764734s
+# elapsed time (Oridnamento_FINALE): 0.187018s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=4, NODES=2
+srun: job 327813 queued and waiting for resources
+srun: job 327813 has been allocated resources
+srun: forcing job termination
+srun: Job step aborted: Waiting up to 62 seconds for job step to finish.
+slurmstepd-node06: error: *** STEP 327813.0 ON node06 CANCELLED AT 2025-08-27T01:11:38 ***
+srun: error: node06: tasks 0-1: Killed
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=8, NODES=2
+srun: job 327814 queued and waiting for resources
+srun: job 327814 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 8.63689s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 8.63662s
+# elapsed time (MPI_Send_Headers): 0.067104s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.793589s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.828345s
+# elapsed time (Oridnamento_FINALE): 0.187455s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=2, NODES=4
+srun: job 327815 queued and waiting for resources
+srun: job 327815 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 87.9884s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 87.9886s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 87.9884s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 87.9884s
+# elapsed time (MPI_Send_Headers): 0.055265s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.694861s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.707282s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.687484s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.741665s
+# elapsed time (Oridnamento_FINALE): 0.387481s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=4, NODES=4
+srun: job 327816 queued and waiting for resources
+srun: job 327816 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 90.6338s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 90.6337s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 90.6338s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 90.6345s
+# elapsed time (MPI_Send_Headers): 0.0558411s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.675017s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.666771s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.687552s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.732241s
+# elapsed time (Oridnamento_FINALE): 0.386373s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=8, NODES=4
+srun: job 327817 queued and waiting for resources
+srun: job 327817 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 83.9879s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 83.9882s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 83.988s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 83.9879s
+# elapsed time (MPI_Send_Headers): 0.0633892s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.796112s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.783285s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.812757s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.820802s
+# elapsed time (Oridnamento_FINALE): 0.401452s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=2, NODES=8
+srun: job 327818 queued and waiting for resources
+srun: job 327818 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 155.563s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 155.563s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 155.563s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 155.563s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 155.563s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 155.563s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 155.563s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 155.563s
+# elapsed time (MPI_Send_Headers): 0.0475549s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.695338s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.685441s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.675558s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.671406s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.693287s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.68348s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.703931s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.755426s
+# elapsed time (Oridnamento_FINALE): 0.740102s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=4, NODES=8
+srun: job 327819 queued and waiting for resources
+srun: job 327819 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 154.981s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 154.981s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 154.981s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 154.982s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 154.981s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 154.981s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 154.981s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 154.981s
+# elapsed time (MPI_Send_Headers): 0.0760874s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.684603s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.674578s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.636353s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.670731s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.693032s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.682981s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.634195s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.707844s
+# elapsed time (Oridnamento_FINALE): 0.744522s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=8, NODES=8
+srun: job 327820 queued and waiting for resources
+srun: job 327820 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 46.4794s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 46.4796s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 46.4796s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 46.4795s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 46.4794s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 46.4794s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 46.4794s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 46.4795s
+# elapsed time (MPI_Send_Headers): 0.10507s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.382177s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.319997s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.33713s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.362671s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.305584s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.384767s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.398317s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.344661s
+# elapsed time (Oridnamento_FINALE): 0.79852s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=2, NODES=2
+srun: job 327821 queued and waiting for resources
+srun: job 327821 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 53.7548s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 53.7549s
+# elapsed time (MPI_Send_Headers): 0.0672587s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.71405s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.75039s
+# elapsed time (Oridnamento_FINALE): 0.186142s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=4, NODES=2
+srun: job 327822 queued and waiting for resources
+srun: job 327822 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 13.6188s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 13.619s
+# elapsed time (MPI_Send_Headers): 0.0674385s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.710741s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.743299s
+# elapsed time (Oridnamento_FINALE): 0.199729s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=8, NODES=2
+srun: job 327823 queued and waiting for resources
+srun: job 327823 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 53.3912s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 53.3909s
+# elapsed time (MPI_Send_Headers): 0.0673915s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.750054s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.785368s
+# elapsed time (Oridnamento_FINALE): 0.18859s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=2, NODES=4
+srun: job 327824 queued and waiting for resources
+srun: job 327824 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 156.744s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 156.744s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 156.744s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 156.744s
+# elapsed time (MPI_Send_Headers): 0.0550272s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.699348s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.712015s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.692593s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.732905s
+# elapsed time (Oridnamento_FINALE): 0.388437s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=4, NODES=4
+srun: job 327825 queued and waiting for resources
+srun: job 327825 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 155.827s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 155.827s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 155.827s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 155.827s
+# elapsed time (MPI_Send_Headers): 0.0779301s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.65928s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.678581s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.637213s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.668543s
+# elapsed time (Oridnamento_FINALE): 0.389854s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=8, NODES=4
+srun: job 327826 queued and waiting for resources
+srun: job 327826 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 158.342s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 158.342s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 158.342s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 158.342s
+# elapsed time (MPI_Send_Headers): 0.0612937s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.802466s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.819036s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.794589s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.832903s
+# elapsed time (Oridnamento_FINALE): 0.389536s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=2, NODES=8
+srun: job 327827 queued and waiting for resources
+srun: job 327827 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 278.956s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 278.956s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 278.956s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 278.956s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 278.956s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 278.956s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 278.956s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 278.956s
+# elapsed time (MPI_Send_Headers): 0.0473144s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.675479s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.665722s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.656026s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.672141s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.663855s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.654014s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.684533s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.686863s
+# elapsed time (Oridnamento_FINALE): 0.738928s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=4, NODES=8
+srun: job 327828 queued and waiting for resources
+srun: job 327828 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 278.384s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 278.384s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 278.384s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 278.384s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 278.384s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 278.384s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 278.384s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 278.385s
+# elapsed time (MPI_Send_Headers): 0.0638715s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.704054s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.694038s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.668003s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.665124s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.712394s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.702508s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.692287s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.747139s
+# elapsed time (Oridnamento_FINALE): 0.740092s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=8, NODES=8
+srun: job 327829 queued and waiting for resources
+srun: job 327829 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 86.9592s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 86.9592s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 86.9594s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 86.9594s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 86.9592s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 86.9592s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 86.9593s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 86.9592s
+# elapsed time (MPI_Send_Headers): 0.102386s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.379754s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.356498s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.299451s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.317174s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.34248s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.380758s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.393354s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.393374s
+# elapsed time (Oridnamento_FINALE): 0.726701s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=2, NODES=2
+srun: job 327830 queued and waiting for resources
+srun: job 327830 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 55.1855s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 55.1857s
+# elapsed time (MPI_Send_Headers): 0.0669229s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.709495s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.745159s
+# elapsed time (Oridnamento_FINALE): 0.186955s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=4, NODES=2
+srun: job 327831 queued and waiting for resources
+srun: job 327831 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 53.3286s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 53.3289s
+# elapsed time (MPI_Send_Headers): 0.0671376s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.713642s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.749788s
+# elapsed time (Oridnamento_FINALE): 0.188021s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=8, NODES=2
+srun: job 327832 queued and waiting for resources
+srun: job 327832 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 48.5847s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 48.5844s
+# elapsed time (MPI_Send_Headers): 0.0674595s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.792495s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.827549s
+# elapsed time (Oridnamento_FINALE): 0.187209s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=2, NODES=4
+srun: job 327833 queued and waiting for resources
+srun: job 327833 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 306.781s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 306.781s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 306.781s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 306.781s
+# elapsed time (MPI_Send_Headers): 0.0547751s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.691069s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.683639s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.703891s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.749846s
+# elapsed time (Oridnamento_FINALE): 0.387052s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=4, NODES=4
+srun: job 327834 queued and waiting for resources
+srun: job 327834 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 308.217s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 308.218s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 308.217s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 308.217s
+# elapsed time (MPI_Send_Headers): 0.0570158s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.692495s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.684172s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.705101s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.751777s
+# elapsed time (Oridnamento_FINALE): 0.396492s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=8, NODES=4
+srun: job 327835 queued and waiting for resources
+srun: job 327835 has been allocated resources
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 341.793s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 341.793s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 341.793s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 341.793s
+# elapsed time (MPI_Send_Headers): 0.0595844s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.779616s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.794223s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.770496s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.830278s
+# elapsed time (Oridnamento_FINALE): 0.387075s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=2, NODES=8
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 523.16s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 523.16s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 523.16s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 523.16s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 523.16s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 523.16s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 523.16s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 523.161s
+# elapsed time (MPI_Send_Headers): 0.0474561s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.661297s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.641267s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.638041s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.668968s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.649093s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.656757s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.663603s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.723994s
+# elapsed time (Oridnamento_FINALE): 0.738046s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=4, NODES=8
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 541.853s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 541.853s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 541.853s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 541.853s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 541.853s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 541.853s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 541.853s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 541.853s
+# elapsed time (MPI_Send_Headers): 0.0747342s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.680802s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.669742s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.633861s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.687181s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.677727s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.631394s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.667572s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.711355s
+# elapsed time (Oridnamento_FINALE): 0.733951s
+====== ORDINAMENTO MPI+FF OK! ======
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=8, NODES=8
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 156.263s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 156.263s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 156.263s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 156.263s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 156.263s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 156.263s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 156.263s
+-----------------
+# elapsed time (saveRecordsToFile_MPI): 156.263s
+# elapsed time (MPI_Send_Headers): 0.116278s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.348411s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.343336s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.326104s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.361215s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.306608s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.265488s
+# elapsed time (Ordinamento_MPI_FF_SubProcess): 0.292252s
+# elapsed time (MPI_Recv_OriginalIndex_e_Ordinamento): 0.356931s
+# elapsed time (Oridnamento_FINALE): 0.741071s
+====== ORDINAMENTO MPI+FF OK! ======
+

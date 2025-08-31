@@ -1,0 +1,319 @@
+nohup: ignoring input
+>>> SIZE=100000, PAYLOAD=128, THREADS=1
+-----------------
+# elapsed time (farmCreationParallel): 0.105068s
+# elapsed time (standardSeqSort): 0.00660303s
+Ordinamento completato, array finale ha 100000 record
+# elapsed time (mergeParSort): 0.0084567s
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=2
+srun: job 322524 queued and waiting for resources
+srun: job 322524 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.0532483s
+# elapsed time (standardSeqSort): 0.00654809s
+Ordinamento completato, array finale ha 100000 record
+# elapsed time (mergeParSort): 0.00528988s
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=4
+srun: job 322525 queued and waiting for resources
+srun: job 322525 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.037847s
+# elapsed time (standardSeqSort): 0.00667287s
+Ordinamento completato, array finale ha 100000 record
+# elapsed time (mergeParSort): 0.00510356s
+
+>>> SIZE=100000, PAYLOAD=128, THREADS=8
+srun: job 322526 queued and waiting for resources
+srun: job 322526 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.0382048s
+# elapsed time (standardSeqSort): 0.00656957s
+Ordinamento completato, array finale ha 100000 record
+# elapsed time (mergeParSort): 0.00546572s
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=1
+srun: job 322527 queued and waiting for resources
+srun: job 322527 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.177227s
+# elapsed time (standardSeqSort): 0.00660458s
+Ordinamento completato, array finale ha 100000 record
+# elapsed time (mergeParSort): 0.00845058s
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=2
+srun: job 322528 queued and waiting for resources
+srun: job 322528 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.0877335s
+# elapsed time (standardSeqSort): 0.0067141s
+Ordinamento completato, array finale ha 100000 record
+# elapsed time (mergeParSort): 0.00528163s
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=4
+srun: job 322529 queued and waiting for resources
+srun: job 322529 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.0577582s
+# elapsed time (standardSeqSort): 0.00658598s
+Ordinamento completato, array finale ha 100000 record
+# elapsed time (mergeParSort): 0.00503086s
+
+>>> SIZE=100000, PAYLOAD=256, THREADS=8
+srun: job 322530 queued and waiting for resources
+srun: job 322530 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.0559335s
+# elapsed time (standardSeqSort): 0.00666105s
+Ordinamento completato, array finale ha 100000 record
+# elapsed time (mergeParSort): 0.00596021s
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=1
+srun: job 322531 queued and waiting for resources
+srun: job 322531 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.304583s
+# elapsed time (standardSeqSort): 0.00662359s
+Ordinamento completato, array finale ha 100000 record
+# elapsed time (mergeParSort): 0.00844406s
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=2
+srun: job 322532 queued and waiting for resources
+srun: job 322532 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.156942s
+# elapsed time (standardSeqSort): 0.00668069s
+Ordinamento completato, array finale ha 100000 record
+# elapsed time (mergeParSort): 0.00525144s
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=4
+srun: job 322533 queued and waiting for resources
+srun: job 322533 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.0778731s
+# elapsed time (standardSeqSort): 0.0067916s
+Ordinamento completato, array finale ha 100000 record
+# elapsed time (mergeParSort): 0.00512155s
+
+>>> SIZE=100000, PAYLOAD=512, THREADS=8
+srun: job 322534 queued and waiting for resources
+srun: job 322534 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.084594s
+# elapsed time (standardSeqSort): 0.00664495s
+Ordinamento completato, array finale ha 100000 record
+# elapsed time (mergeParSort): 0.00510966s
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=1
+srun: job 322535 queued and waiting for resources
+srun: job 322535 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 1.03895s
+# elapsed time (standardSeqSort): 0.112772s
+Ordinamento completato, array finale ha 1000000 record
+# elapsed time (mergeParSort): 0.128964s
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=2
+srun: job 322536 queued and waiting for resources
+srun: job 322536 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.530906s
+# elapsed time (standardSeqSort): 0.111734s
+Ordinamento completato, array finale ha 1000000 record
+# elapsed time (mergeParSort): 0.079823s
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=4
+srun: job 322537 queued and waiting for resources
+srun: job 322537 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.38275s
+# elapsed time (standardSeqSort): 0.113786s
+Ordinamento completato, array finale ha 1000000 record
+# elapsed time (mergeParSort): 0.0693828s
+
+>>> SIZE=1M, PAYLOAD=128, THREADS=8
+srun: job 322538 queued and waiting for resources
+srun: job 322538 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.371039s
+# elapsed time (standardSeqSort): 0.113127s
+Ordinamento completato, array finale ha 1000000 record
+# elapsed time (mergeParSort): 0.0908506s
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=1
+srun: job 322539 queued and waiting for resources
+srun: job 322539 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 15.4014s
+# elapsed time (standardSeqSort): 0.111868s
+Ordinamento completato, array finale ha 1000000 record
+# elapsed time (mergeParSort): 0.126931s
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=2
+srun: job 322540 queued and waiting for resources
+srun: job 322540 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.872433s
+# elapsed time (standardSeqSort): 0.11226s
+Ordinamento completato, array finale ha 1000000 record
+# elapsed time (mergeParSort): 0.0809317s
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=4
+srun: job 322541 queued and waiting for resources
+srun: job 322541 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.583515s
+# elapsed time (standardSeqSort): 0.112529s
+Ordinamento completato, array finale ha 1000000 record
+# elapsed time (mergeParSort): 0.0687747s
+
+>>> SIZE=1M, PAYLOAD=256, THREADS=8
+srun: job 322542 queued and waiting for resources
+srun: job 322542 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.558576s
+# elapsed time (standardSeqSort): 0.11097s
+Ordinamento completato, array finale ha 1000000 record
+# elapsed time (mergeParSort): 0.0901232s
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=1
+srun: job 322543 queued and waiting for resources
+srun: job 322543 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 3.04689s
+# elapsed time (standardSeqSort): 0.113222s
+Ordinamento completato, array finale ha 1000000 record
+# elapsed time (mergeParSort): 0.129399s
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=2
+srun: job 322544 queued and waiting for resources
+srun: job 322544 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 1.55254s
+# elapsed time (standardSeqSort): 0.112501s
+Ordinamento completato, array finale ha 1000000 record
+# elapsed time (mergeParSort): 0.0807275s
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=4
+srun: job 322545 queued and waiting for resources
+srun: job 322545 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.747327s
+# elapsed time (standardSeqSort): 0.112472s
+Ordinamento completato, array finale ha 1000000 record
+# elapsed time (mergeParSort): 0.0688005s
+
+>>> SIZE=1M, PAYLOAD=512, THREADS=8
+srun: job 322546 queued and waiting for resources
+srun: job 322546 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 0.854361s
+# elapsed time (standardSeqSort): 0.111411s
+Ordinamento completato, array finale ha 1000000 record
+# elapsed time (mergeParSort): 0.0905559s
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=1
+srun: job 322547 queued and waiting for resources
+srun: job 322547 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 10.3961s
+# elapsed time (standardSeqSort): 1.79271s
+Ordinamento completato, array finale ha 10000000 record
+# elapsed time (mergeParSort): 1.95729s
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=2
+srun: job 322548 queued and waiting for resources
+srun: job 322548 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 5.29964s
+# elapsed time (standardSeqSort): 1.77991s
+Ordinamento completato, array finale ha 10000000 record
+# elapsed time (mergeParSort): 1.19756s
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=4
+srun: job 322549 queued and waiting for resources
+srun: job 322549 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 3.93141s
+# elapsed time (standardSeqSort): 1.82678s
+Ordinamento completato, array finale ha 10000000 record
+# elapsed time (mergeParSort): 0.875163s
+
+>>> SIZE=10M, PAYLOAD=128, THREADS=8
+srun: job 322550 queued and waiting for resources
+srun: job 322550 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 4.1514s
+# elapsed time (standardSeqSort): 1.80235s
+Ordinamento completato, array finale ha 10000000 record
+# elapsed time (mergeParSort): 1.12929s
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=1
+srun: job 322551 queued and waiting for resources
+srun: job 322551 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 17.7569s
+# elapsed time (standardSeqSort): 1.75951s
+Ordinamento completato, array finale ha 10000000 record
+# elapsed time (mergeParSort): 1.91066s
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=2
+srun: job 322552 queued and waiting for resources
+srun: job 322552 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 8.69714s
+# elapsed time (standardSeqSort): 1.78087s
+Ordinamento completato, array finale ha 10000000 record
+# elapsed time (mergeParSort): 1.15833s
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=4
+srun: job 322553 queued and waiting for resources
+srun: job 322553 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 6.2934s
+# elapsed time (standardSeqSort): 1.78988s
+Ordinamento completato, array finale ha 10000000 record
+# elapsed time (mergeParSort): 0.875046s
+
+>>> SIZE=10M, PAYLOAD=256, THREADS=8
+srun: job 322554 queued and waiting for resources
+srun: job 322554 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 6.17847s
+# elapsed time (standardSeqSort): 1.7869s
+Ordinamento completato, array finale ha 10000000 record
+# elapsed time (mergeParSort): 1.13238s
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=1
+srun: job 322555 queued and waiting for resources
+srun: job 322555 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 30.5946s
+# elapsed time (standardSeqSort): 1.82105s
+Ordinamento completato, array finale ha 10000000 record
+# elapsed time (mergeParSort): 1.98346s
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=2
+srun: job 322556 queued and waiting for resources
+srun: job 322556 has been allocated resources
+-----------------
+# elapsed time (farmCreationParallel): 15.5368s
+# elapsed time (standardSeqSort): 1.82134s
+Ordinamento completato, array finale ha 10000000 record
+# elapsed time (mergeParSort): 1.13761s
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=4
+-----------------
+# elapsed time (farmCreationParallel): 7.54693s
+# elapsed time (standardSeqSort): 1.8s
+Ordinamento completato, array finale ha 10000000 record
+# elapsed time (mergeParSort): 0.867139s
+
+>>> SIZE=10M, PAYLOAD=512, THREADS=8
+-----------------
+# elapsed time (farmCreationParallel): 9.24579s
+# elapsed time (standardSeqSort): 1.80386s
+Ordinamento completato, array finale ha 10000000 record
+# elapsed time (mergeParSort): 1.12885s
+

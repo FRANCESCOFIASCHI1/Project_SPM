@@ -12,7 +12,6 @@
 
 #include "hpc_helpers.hpp"   
 
-// Direttive OpenOMP -> usare (-fopenmp) per compilare
 #include <omp.h>
 #include <mpi.h>
 
@@ -64,10 +63,6 @@ std::vector<char> saveRecordsToFile(int n, unsigned int payload_max, int num_thr
     {
         
         int id = omp_get_thread_num();
-        // int n_threads = omp_get_num_threads();  // Numero di thread attivi in questo team
-
-        // #pragma omp single
-        //     std::cout << "Numero di thread in uso: " << n_threads << std::endl;
         auto& local_buffer = thread_buffers[id];
 
         #pragma omp for
@@ -240,7 +235,6 @@ void mergeSortParMPI(vector<RecordHeader>& arr, int left, int right, vector<Reco
     mergeSortParMPI(arr, left, mid, temp);
     #pragma omp task shared(arr, temp)
     mergeSortParMPI(arr, mid + 1, right, temp);
-    // Aspetta che tutte le task precedenti siano completate
     // Aspetta che tutte le due parti dell'array siano ordinate prima di fare il merge altrimenti il merge non funziona
     #pragma omp taskwait
     mergeMPI(arr, left, mid, right, temp);
@@ -289,10 +283,6 @@ int main(int argc, char *argv[]) {
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
-    // Posso dividere anche la scrittura del file in più processi
-    // Dentro ognuno genero chunk_size record che scrivo nel file
-    // La scrittura su file però va effettuata nel rank 0 sennò ho comportamenti indefiniti
-
     int base = array_size / size;
     int resto = array_size % size;
 
@@ -305,14 +295,8 @@ int main(int argc, char *argv[]) {
     size_t local_size_bytes = local_buffer.size();
 
     // Tutti raccolgono le dimensioni dei buffer per calcolare offset
-    // Per non avere scritture sovrapposte devo calcolare l'offset da dove ogni rank deve partire
-    // Ogni rank deve conoscere le dimensioni di tutti i buffer
     std::vector<size_t> all_sizes(size);
     // è una collective operation che prende il valore locale di tutti i processi
-    // li distribuisce in un array a tutti i processi (all_sizes).
-    // all_sizes[0] = numero di byte scritti dal rank 0
-    // all_sizes[1] = numero di byte scritti dal rank 1
-    // array è identico in tutti i processi.
     MPI_Allgather(&local_size_bytes, 1, MPI_UNSIGNED_LONG, all_sizes.data(), 1, MPI_UNSIGNED_LONG, MPI_COMM_WORLD);
 
     // Calcolo offset in byte
@@ -334,10 +318,6 @@ int main(int argc, char *argv[]) {
     if(rank == 0) std::cout << "Scrittura completata!" << std::endl;
 
     TIMERSTOP(saveRecordsToFile_MPI);
-    // // CREARE VARIABILE DA AFFIDARE A PAYLOAD_MAX da linea di comando
-    // // Generazione record casuali
-    // saveRecordsToFile("records_OpenMP.bin", array_size, PAYLOAD_MAX);
-    // TIMERSTOP(saveRecordsToFile);
 
     MPI_Datatype MPI_RecordHeader;
     MPI_Type_contiguous(sizeof(RecordHeader), MPI_BYTE, &MPI_RecordHeader);
@@ -384,10 +364,7 @@ int main(int argc, char *argv[]) {
         // =============== MERGE MPI ==================
         // ============================================
         int mpi_records_dim = recordsMPI_OpenMP.size();
-        //std::cout << "Dimensione totale dei record MPI: " << mpi_records_dim << std::endl;
-        std::cout << "===============================" << std::endl;
-        std::cout << "========= MPI+OpenMP ==========" << std::endl;
-        std::cout << "===============================" << std::endl;
+
         // ------------------ CALCOLO CHUNK ------------------
         int my_chunk_size = sendcounts[0];  // rank 0 elabora chunk + resto
 
@@ -404,14 +381,14 @@ int main(int argc, char *argv[]) {
 
         std::vector<RecordHeader> local_headers(my_chunk_size);
         MPI_Scatterv(
-            all_headers.data(),             // root buffer
-            sendcounts.data(),              // numero elementi per rank
-            displs.data(),                  // offset per rank
-            MPI_RecordHeader,               // tipo dati
-            local_headers.data(),           // buffer locale
-            my_chunk_size,                  // numero elementi locali
-            MPI_RecordHeader,               // tipo dati
-            0,                              // root
+            all_headers.data(),
+            sendcounts.data(),
+            displs.data(),
+            MPI_RecordHeader,
+            local_headers.data(),
+            my_chunk_size,
+            MPI_RecordHeader,
+            0,
             MPI_COMM_WORLD
         );
 
@@ -502,9 +479,7 @@ int main(int argc, char *argv[]) {
         for (Record* r : records) free(r);
     }
 
-    if (rank != 0) {
-        // int T_start = MPI_Wtime();
-        
+    if (rank != 0) {        
         // Altri processi non principale
         // Devono ordinare i record dell'array di dimensione chunk_size
         // rank ricevente
@@ -540,7 +515,6 @@ int main(int argc, char *argv[]) {
         MPI_Send(original_indices.data(), my_chunk_size, MPI_INT, 0, 2, MPI_COMM_WORLD);
 
         TIMERSTOP(Ordinamento_MPI_SubProcess);
-        // int T_end = MPI_Wtime();
         // std::cout << "Tempo Ordinamento MPI SubProcess (rank " << rank << "): " << T_end - T_start << " secondi" << std::endl;
     }
 

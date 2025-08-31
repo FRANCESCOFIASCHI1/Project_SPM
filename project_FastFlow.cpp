@@ -513,6 +513,13 @@ int main(int argc, char *argv[]) {
     }
     TIMERSTOP(mergeParSort)
 
+    // printRecords(result);
+    // Controllo ordinamento
+    // for (size_t i = 1; i < recordsCopySeqMerge.size(); ++i)
+    //     if (recordsCopySeqMerge[i-1]->key > recordsCopySeqMerge[i]->key) {
+    //         cerr << "Errore ordinamento Sequenziale Merge!" << endl;
+    //     }
+
     for (size_t i = 1; i < recordsCopySeqStandard.size(); ++i)
         if (recordsCopySeqStandard[i-1]->key > recordsCopySeqStandard[i]->key) {
             cerr << "Errore ordinamento Sequenziale Standard!" << endl;

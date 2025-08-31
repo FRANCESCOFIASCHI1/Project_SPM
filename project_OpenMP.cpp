@@ -7,10 +7,8 @@
 #include <iostream>
 #include <fstream>
 #include <random>
-#include <cstring>
-#include "hpc_helpers.hpp"   
+#include "hpc_helpers.hpp"
 
-// Direttive OpenOMP -> usare (-fopenmp) per compilare
 #include <omp.h>
 
 
@@ -57,7 +55,7 @@ void saveRecordsToFile(const std::string& filename, int n, unsigned int payload_
     #pragma omp parallel
     {
         std::vector<char> local_buffer;
-        // Riserva spazio per il buffer locale così garantisco il giusto spazio
+        // Riserva spazio per il buffer locale così garantisco il gisto spazio
         local_buffer.reserve((sizeof(unsigned long) + sizeof(unsigned int) + payload_max) * (n / (omp_get_thread_num() + 1)));
 
         #pragma omp for
@@ -155,19 +153,6 @@ void merge(vector<Record*>& arr, int left, int mid, int right, vector<Record*>& 
         arr[idx] = temp[idx];
 }
 
-// // --- MergeSort Parallelizzato MALE -> creazione ed eliminazione di thread crea overhead elevato ---
-// void mergeSortSeq(vector<Record*>& arr, int left, int right, vector<Record*>& temp) {
-//     if (left >= right) return;
-//     int mid = left + (right - left) / 2;
-//     #pragma omp parallel sections
-//     {
-//         #pragma omp section
-//         mergeSortSeq(arr, left, mid, temp);
-//         #pragma omp section
-//         mergeSortSeq(arr, mid + 1, right, temp);
-//     }
-//     merge(arr, left, mid, right, temp);
-// }
 // --- MergeSort SEQ ----
 void mergeSortSeq(vector<Record*>& arr, int left, int right, vector<Record*>& temp) {
     if (left >= right) return;
@@ -233,7 +218,7 @@ int main(int argc, char *argv[]) {
     unsigned int PAYLOAD_MAX = 1024; // default
 
     unsigned long array_size = 1000; 
-    unsigned int num_threads = 1;
+    int num_threads = 1;
 
     int opt;
     while ((opt = getopt(argc, argv, "s:t:p:")) != -1) {
@@ -313,8 +298,6 @@ int main(int argc, char *argv[]) {
     }
 
     cout << "========MergeSort completato correttamente su " << array_size << " record.==========" << endl;
-    //printRecords(records);
-    
 
     // Pulizia memoria
     for (Record* r : records) free(r);
