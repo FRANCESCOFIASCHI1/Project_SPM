@@ -458,7 +458,6 @@ int main(int argc, char *argv[]) {
         for(int i=0; i<my_chunk_size; i++)
             headers0[i] = all_headers[i];
 
-
         ff_farm mergeSortParalleloFarm;
         int chunk_size_farm = my_chunk_size / num_threads;
         EmitterSortParallel* EmitterSort = new EmitterSortParallel(headers0, chunk_size_farm);
