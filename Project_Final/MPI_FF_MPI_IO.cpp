@@ -449,7 +449,8 @@ int main(int argc, char *argv[]) {
         TIMERSTART(MPI_Recv_OriginalIndex_e_Ordinamento);
         for(int i = 1; i < size; i++) {
             std::vector<int> original_indices_Sorted(sendcounts[i]);
-            MPI_Irecv(original_indices_Sorted.data(), sendcounts[i], MPI_INT, i, 2, MPI_COMM_WORLD, &requests[i-1]);recv_buffers[i-1] = std::move(original_indices_Sorted);
+            MPI_Irecv(original_indices_Sorted.data(), sendcounts[i], MPI_INT, i, 2, MPI_COMM_WORLD, &requests[i-1]);
+            recv_buffers[i-1] = std::move(original_indices_Sorted);
             //std::cout << "============ DATI RICEVUTI ================ "<<" DATI: " << original_indices_Sorted.size()<<"\n";
         }
 
